@@ -35,3 +35,20 @@
   다른 쓰레드도 동시에 작업을 하기 때문에 덮어쓰기 문제가 발생하여 원하는 값이 나오지 않을 수 있다.   
   interlockedincrement 함수를 사용하거나 atomic을 include 하여 atomic<int32>와 같이 사용하면 해당 문제를 해결할 수 있다.       
   ->속도 저하 문제가 생길 수 있으므로 꼭 필요한 경우에만 사용하자
+	
+	DeadLock
+	-Lock 순서를 지켜준다. A ->B 현실적으로 어렵긴하다.
+   계발단계에서는 일어나지 않다가 릴리즈때 일어남
+	
+		mutex m1;
+	mutex m2;
+	std::lock(m1, m2);// 알아서 순서지키며 lock 해줌
+	
+	//adopt_lock 이미 lock 된 상태니까 나중에 풀어주기만 해라
+	lock_guard<mutex> g1(m1, std::adopt_lock);
+
+	//락의 사이클이 발생하면 데드락(그래프 구조)
+	
+spinlock 중요 interview 계속 락에대해 물음
+	
+유저레벨 커널레벨 컨텍스트 스위칭 부하크다. 쓰레드 스케줄러
