@@ -27,7 +27,8 @@
 * DB
 
 ## 멀티쓰레드 
-* <windows.h>에 있는 CreateThread는 윈도우에 종속적. C++ 11에서 지원하는 thread를 include하여 std::thread를 사용하는 것이 범용성에 좋다.
+* <windows.h>에 있는 CreateThread는 윈도우에 종속적. 
+* C++ 11에서 지원하는 thread를 include하여 std::thread를 사용하는 것이 범용성에 좋다.
 * join() 함수로 쓰레드가 끝날때까지 기다린 후 종료한다. vector<>에 thread를 여러개 넣어놓고 관리할 수 있다.
 * 전역변수 동기화 문제
 > 전역변수 값 변경시 레지스트리와 메모리 사이에 읽기 쓰기 하는 과정 중    
