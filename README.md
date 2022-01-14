@@ -40,11 +40,11 @@
 * Lock 순서를 지켜준다.   
 	=>A쓰레드에서 mutexA -> mutexB 순서로 Lock을 했을 경우 B쓰레드도 mutexA->mutexB 순서로 Lock을 한다.
 * 개발단계에서는 일어나지 않다가 배포 후 다수의 사용자가 사용할 경우 간혹가다가 일어나는 경우가 대다수다. 
-	
-		mutex m1;
-	mutex m2;
-	std::lock(m1, m2);// 알아서 순서지키며 lock 해줌
-	
+```
+mutex m1;
+mutex m2;
+std::lock(m1, m2);// 알아서 순서지키며 lock 해줌
+```	
 	//adopt_lock 이미 lock 된 상태니까 나중에 풀어주기만 해라
 	lock_guard<mutex> g1(m1, std::adopt_lock);
 
