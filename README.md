@@ -37,7 +37,8 @@
   ->속도 저하 문제가 생길 수 있으므로 꼭 필요한 경우에만 사용하자
 	
 ## DeadLock
-* Lock 순서를 지켜준다. A쓰레드에서 mutexA -> mutexB 순서로 Lock을 했을 경우 B쓰레드도 mutexA->mutexB 순서로 Lock을 한다.
+* Lock 순서를 지켜준다. 
+	A쓰레드에서 mutexA -> mutexB 순서로 Lock을 했을 경우 B쓰레드도 mutexA->mutexB 순서로 Lock을 한다.
 * 개발단계에서는 일어나지 않다가 배포 후 다수의 사용자가 사용할 경우 간혹가다가 일어나는 경우가 대다수다. 
 	
 		mutex m1;
