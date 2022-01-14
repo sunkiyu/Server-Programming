@@ -48,8 +48,8 @@ std::lock(m1, m2); //교착상태 회피 알고리즘을 사용하여 lock 해�
 //assume the calling thread already has ownership of the mutex
 lock_guard<mutex> g1(m1, std::adopt_lock);
 ```
-* 알고리즘 그래프로 생각해볼때 락의 사이클이 발생하면 데드락
-* 유저레벨 커널레벨 컨텍스트 컨텍스트 스위칭 부하 생각보다 크다. 	
+* 알고리즘 그래프로 생각해볼 때 락의 사이클이 발생하면 데드락
+* 유저레벨 커널레벨 컨텍스트 스위칭 부하 생각보다 크다. 	
 
 ## SpinLock
 	
