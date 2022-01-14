@@ -43,13 +43,14 @@
 ```
 mutex m1;
 mutex m2;
-std::lock(m1, m2);// 알아서 순서지키며 lock 해줌
-```	
-	//adopt_lock 이미 lock 된 상태니까 나중에 풀어주기만 해라
-	lock_guard<mutex> g1(m1, std::adopt_lock);
+std::lock(m1, m2); //교착상태 회피 알고리즘을 사용하여 lock 해준다.	
+//adopt_lock 이미 lock 된 상태니까 나중에 풀어주기만 해라
+//assume the calling thread already has ownership of the mutex
+lock_guard<mutex> g1(m1, std::adopt_lock);
+```
+* 알고리즘 그래프로 생각해볼때 락의 사이클이 발생하면 데드락
+* 유저레벨 커널레벨 컨텍스트 컨텍스트 스위칭 부하 생각보다 크다. 	
 
-	//락의 사이클이 발생하면 데드락(그래프 구조)
+## SpinLock
 	
-spinlock 중요 interview 계속 락에대해 물음
-	
-유저레벨 커널레벨 컨텍스트 스위칭 부하크다. 쓰레드 스케줄러
+
