@@ -52,7 +52,7 @@ lock_guard<mutex> g1(m1, std::adopt_lock);
 * 유저레벨 커널레벨 컨텍스트 스위칭 부하 생각보다 크다. 	
 
 ## SpinLock
-  
+-다른 쓰레드가 lock을 소유중이면 lock이 반환될 때까지 계속 확인하며 기다린다.
 * ##### volatile => 컴파일러 최적화 수행하지 마라
 ```
 int32 a=0;
