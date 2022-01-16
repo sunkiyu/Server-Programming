@@ -62,5 +62,13 @@ a=2;
 a=3;
 cout<<a<<endl;
 ```
-
+컴파일러 최적화가 적용된 모습
+00007FF6967710C0  mov         qword ptr [rsp+60h],rax  
+int32 a = 0;
+a = 1;
+a = 2;
+a = 3;
+cout << a << endl;
+00007FF6967710C5  mov         edx,3  
+Release 모드 최적화 적용된다.
 
