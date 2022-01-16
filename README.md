@@ -54,7 +54,7 @@ lock_guard<mutex> g1(m1, std::adopt_lock);
 ## SpinLock(중요 interview)
 
 멀티쓰레드에 대한 이해도를 묻는데 좋음   
-### volatile => 컴파일러 최적화 수행하지 마라
+* ### volatile => 컴파일러 최적화 수행하지 마라
 ```
 int32 a=0;
 a=1;
