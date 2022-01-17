@@ -28,8 +28,10 @@ public:
 		//}
 		//_locked가 expected이면 desired로 바꿔라
 		//spin 락이 계속 상태 체크를 하기때문에 cpu 점유율이 높아 질 수 있다. (상대 Lock이 오래 걸릴 경우)
+		//_locked == expected 체크를 atomic하게 할 수 있다.
 		while(_locked.compare_exchange_strong(expected, desired) == false)
 		{
+			//_locked(true) != expected(false)이므로 else에서 expected가 true가 되므로 false 시켜줘야 _locked!=expected를 만족시킨다.
 			expected = false;
 		}
 		//while (_locked)
@@ -43,6 +45,7 @@ public:
 	void unlock()
 	{
 		//_locked = false;
+		//_locked를 false 시켜줘야 expected == _locked를 만족하여 lock할 수 있다.
 		_locked.store(false);
 	}
 private:
