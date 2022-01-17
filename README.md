@@ -2,8 +2,6 @@
 * * *
 # 목차
  * [서버란](#서버란)
-  * [Web Server](#Web-Server(예-HTTP-Server))
-  * [Game Server](#Game-Server(예-TCP-Server,-Binary-Server))
   * [게임서버 작성시 고려대상](#게임서버-작성시-고려대상)
   * [멀티쓰레드](#멀티쓰레드)
 * * *
