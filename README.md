@@ -109,7 +109,7 @@ if(!locked) {
 ```
 위 클래스에서 lock 함수는 locked 변수의 값을 확인 후(체크) false 일경우 locked 변수를 true로 설정하고(액트) true리턴한다.   
 만약 두 쓰레드 A,B가 CASExample의 lock()함수에 동시에 접근한다면 A,B 쓰레드 모두 locked 변수를 false로 읽을 것이고   
-locked = true 작업을 실행할 것이므로 A쓰레드가 lock을 할 경우 B쓰레드는 lock을 false리턴(실패)하는 의도와 다른 결과가 나타날 것이다.   
+locked = true, return true 작업을 실행할 것이므로 A쓰레드가 lock을 할 경우 B쓰레드는 lock을 false리턴(실패)하는 의도와 다른 결과가 나타날 것이다.   
 따라서, 체크와 액트 실행 중에는 다른 쓰레드의 간섭을 받지 않고 원자적인 코드 블록을 실행 시켜야 한다.(체크-액트가 하나의 원자적인 작업으로 오직 하나의 쓰레드에 의해 실행되어야함)   
 compare_exchange_strong, compare_exchange_weak 함수가 원자적인 체크-액트 작업을 도와준다.
 
