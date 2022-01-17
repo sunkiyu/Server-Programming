@@ -127,4 +127,9 @@ locked = true, return true 작업을 실행할 것이므로 A쓰레드가 lock�
 따라서, 체크와 액트 실행 중에는 다른 쓰레드의 간섭을 받지 않고 원자적인 코드 블록을 실행 시켜야 한다.(체크-액트가 하나의 원자적인 작업으로 오직 하나의 쓰레드에 의해 실행되어야함)   
 compare_exchange_strong, compare_exchange_weak 함수가 원자적인 체크-액트 작업을 도와준다.
 
+## Sleep
+	
+## Event
+자동 Reset 이벤트
+수동 Reset 이벤트
 
