@@ -59,7 +59,8 @@ lock_guard<mutex> g1(m1, std::adopt_lock);
 * 알고리즘 그래프로 생각해볼 때 락의 사이클이 발생하면 데드락
 * 유저레벨 커널레벨 컨텍스트 스위칭 부하 생각보다 크다. 	
 ### RAII(Resource Acquisition is Initialization)   
-C++에서 객체가 생성되며 할당된 리소스가 Scope를 벗어나면 리소스를 해제해주는 기법.   stack에 할당된 리소스는 Scope를 벗어나면서 소멸자가 호출되며 리소스가 해제되는 원리를 이용.   
+C++에서 객체가 생성되며 할당된 리소스가 Scope를 벗어나면 리소스를 해제해주는 기법.   
+stack에 할당된 리소스는 Scope를 벗어나면서 소멸자가 호출되며 리소스가 해제되는 원리를 이용.   
 
 ## SpinLock
 * 스핀락이라는 이름은 락을 획득할 때까지 해당 스레드가 빙빙 돌고 있다(spinning)는 것을 의미
