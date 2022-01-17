@@ -53,7 +53,9 @@ lock_guard<mutex> g1(m1, std::adopt_lock);
 * 유저레벨 커널레벨 컨텍스트 스위칭 부하 생각보다 크다. 	
 
 ## SpinLock
--다른 쓰레드가 lock을 소유중이면 lock이 반환될 때까지 계속 확인하며 기다린다.
+* 다른 쓰레드가 lock을 소유중이면 lock이 반환될 때까지 계속 확인하며 기다린다.
+* 다른 쓰레드가 lock하는 시간이 짧을 때 유용하다. 루프를 돌면서 lock할 타이밍을 체크하므로 불필요한 컨텍스트 스위칭을 막을 수 있다.
+* 다른 쓰레드가 lock하는 시간이 길 경우 루프로 인해 CPU 점유율이 높아질 수 있다.(Busy Waiting)   	
 * ##### volatile => 컴파일러 최적화 수행하지 마라
 ```
 int32 a=0;
@@ -71,7 +73,7 @@ a = 3;
 cout << a << endl;
 00007FF6967710C5  mov         edx,3  
 
-//volatile 키워드 적용
+//어셈블리 코드 => volatile 키워드 적용
 00007FF719E010C0  mov         qword ptr [rsp+60h],rax  
 volatile int32 a = 0;
 00007FF719E010C5  xor         ebx,ebx  
@@ -83,7 +85,7 @@ volatile int32 a = 0;
 	a = 3;
 00007FF719E010DB  mov         dword ptr [a],3  
 cout << a << endl;
-```
+```   
 Release 모드 최적화 적용된다.
 	
 
