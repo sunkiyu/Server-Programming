@@ -110,18 +110,21 @@ Release 모드 최적화 적용된다.
 -compare_exchange_weak
 =>두 함수가 모두 atomic 한 CAS 작업을 제공한다.
 ```
-class CASExample {
+class CASExample 
+{
 private:
-bool locked = false;
+	bool locked = false;
 
 public:
-bool lock() {
-if(!locked) {
-    locked = true;
-    return true;
-   }
-  return false;
-  }
+	bool lock() 
+	{
+		if(!locked) 
+		{
+    			locked = true;
+    			return true;
+  		}
+ 		 return false;
+  	}
 }
 ```
 1. 위 클래스에서 lock 함수는 locked 변수의 값을 확인 후(체크) false 일경우 locked 변수를 true로 설정하고(액트) true리턴한다.   
