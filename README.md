@@ -8,7 +8,7 @@
   * [SpinLock](#SpinLock)
   * [Sleep](#Sleep)
   * [Event](#Event)
-  * [Condition Variable](#Condition Variable)
+  * [Condition Variable](#Condition-Variable)
 * * *
 ## 서버란
 -다른 컴퓨터에서 연결 가능하도록 상시 실행대기하며 서비스를 제공하는 프로그램
@@ -176,4 +176,6 @@ void Consumer()
 * UsageCount는 생성된 커널 오브젝트를 참조하는 횟수인데 CreateProcess일 경우 부모 프로세스, 자식 프로세스 총 2개의 UsageCount가 발생한다.   
 * CloseHandle을 호출하게 되면 UsageCount가 감소하게 되는데 UsageCount가 0이 되었을때 해당 커널 오브젝트가 소멸된다.   
 * Handle을 커널 오브젝트 정보를 참조하는 역할을 한다.
-## Condition Variable
+## Condition Variable   
+* condition_variable 클래스는 멀티쓰레드 환경에서 대기와 통지를 통해 공유 변수를 안전하게 수정할 수 있다.   
+* 보통 뮤텍스 함께 사용하여 Thread Safe하다.
