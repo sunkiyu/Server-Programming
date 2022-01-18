@@ -142,8 +142,35 @@ compare_exchange_strong, compare_exchange_weak 함수가 원자적인 체크-액
 수동 Reset 이벤트
 	
 ```
-Handle handle = ::CreateEvent(NULL,/*보안속성*/FALSE/*bManualRest*/, FALSE/*bInitialState*/, NULL);
+void Producer()
+{
+	while (true)
+	{
+		{
+			unique_lock<mutex> lock(m);
+			q.push(100);
+		}
+		::SetEvent(handle);
+		this_thread::sleep_for(100000000ms);
+	}
+};
 
+void Consumer()
+{
+	while (true)
+	{
+		unique_lock<mutex> lock(m);
+		::WaitForSingleObject(handle, INFINITE);
+		//::ResetEvent(handle);
+		//Signal 되었다가 Non-Signal 상태로 변함
+		if (q.empty() == false)
+		{
+			int32 data = q.front();
+			q.pop();
+			cout << data << endl;
+		}
+	}
+};
 ```
 * CreateEvent,CreateProcess 등을 수행하면 커널 오브젝트가 생성된다.    
 * UsageCount는 생성된 커널 오브젝트를 참조하는 횟수인데 CreateProcess일 경우 부모 프로세스, 자식 프로세스 총 2개의 UsageCount가 발생한다.   
