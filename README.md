@@ -195,3 +195,9 @@ void Consumer()
 	2. wait, wait_for 또는 wait_until을 실행. 대기 작업은 atomic하게 뮤텍스를 해제하고 스레드 실행을 일시 중단.
 	3. 조건 변수가 알림을 받거나 시간 초과가 만료되거나 조건 충족이 실패하면 스레드가 깨어나고 뮤텍스가 원자적으로 다시 획득됩니다. 
 	  그런 다음 스레드는 조건을 확인하고 조건 충족이 실패한 경우 대기를 재개.
+## Future
+
+## Cache
+	CPU가 RAM에서 데이터를 꺼내기 전 캐시를 확인한다.
+	Tmeporal locality 
+	spatial locality
