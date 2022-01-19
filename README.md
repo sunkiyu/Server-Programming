@@ -182,3 +182,5 @@ void Consumer()
 ## Condition Variable   
 * condition_variable 클래스는 멀티쓰레드 환경에서 대기와 통지를 통해 공유 변수를 안전하게 수정할 수 있다.   
 * 보통 뮤텍스 함께 사용하여 Thread Safe하다.
+* condition_variable 클래스는 다른 스레드가 공유 변수(조건)를 수정하고, condition_variable을 알릴 때까지    
+  하나의 스레드 또는 동시에 여러 스레드를 차단하는 데 사용할 수 있는 동기화 기본 요소.
