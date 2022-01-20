@@ -206,7 +206,7 @@ void Consumer()
 * Tmeporal Locality =>한번 사용된 데이터는 재사용될 확률이 높다.
 * Spatial Locality => 사용된 데이터의 주변 데이터는 사용될 확률이 높다.
 	
-* Spatial Locality의 예
+* Spatial Locality의 예(Cache Friendly Code)
 ```
 INT32 buffer[10000][10000];
 int main(int argc, char *argv[])
