@@ -266,3 +266,9 @@ int main(int argc, char *argv[])
 여러 쓰레드가 동일 메모리에 동시 접근 그 중 write가 문제가 된다
 atomic is_lock_free 원자적으로 처리되었는가?
 
+## Thread Local Stoage(TLS)
+쓰레드들이 하나의 로직에 몰리지 않게 해야한다.
+쓰레드 마다 독립적으로 가지고 있는 공간
+	Heap이나 데이터영역(static 변수,전역변수)가 있는 공간에서 큰 덩어리를 떼어다가 TLS 영역에서 계산한다.
+매번 heap 데이터 영역에 쓰레드가 몰리면 데이터 경합이 커지기 때문
+
