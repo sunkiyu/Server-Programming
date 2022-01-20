@@ -198,6 +198,20 @@ void Consumer()
 	3. 조건 변수가 알림을 받거나 시간 초과가 만료되거나 조건 충족이 실패하면 스레드가 깨어나고 뮤텍스가 원자적으로 다시 획득됩니다. 
 	  그런 다음 스레드는 조건을 확인하고 조건 충족이 실패한 경우 대기를 재개.
 ## Future
+* 비동기적 실행
+* deferred ->lazy evaluation 지연해서 실행
+* async ->별도의 쓰레드를 만들어서 실행
+```
+std::future<int64> future = std::async(std::launch::async, Process);
+	
+future.wait(); // future.wait_for(INFINITE);
+std::future_status status = future.wait_for(1ms);
+if (status == future_status::ready)
+{
+
+}
+int64 sum = future.get(); 
+```
 
 ## Cache
 * RAM 보다 CPU에 가까우며 속도가 빠르다. 처리 속도(레지스트리>캐시>램>하드디스크)
