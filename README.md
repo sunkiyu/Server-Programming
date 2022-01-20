@@ -9,6 +9,8 @@
   * [Sleep](#Sleep)
   * [Event](#Event)
   * [Condition Variable](#Condition-Variable)
+  * [Future](#Future)
+  * [Cache](#Cache)
 * * *
 ## 서버란
 -다른 컴퓨터에서 연결 가능하도록 상시 실행대기하며 서비스를 제공하는 프로그램
@@ -200,6 +202,6 @@ void Consumer()
 ## Cache
 * CPU가 RAM에서 데이터를 꺼내기 전 캐시를 확인한다.
 * Tmeporal locality =>한번 사용된 데이터는 재사용될 확률이 높다.
-* spatial locality => 사용된 데이터의 주변 데이터는 사용될 확률이 높다.
+* spatial locality => 사용된 데이터의 주변 데이터는 사용될 확률이 높다.   
 ![image](https://user-images.githubusercontent.com/68372094/150241439-105f7d46-38d8-4fb2-9c4f-788bfc46fcc4.png)
 
