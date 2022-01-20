@@ -258,3 +258,11 @@ int main(int argc, char *argv[])
 ```
 ![image](https://user-images.githubusercontent.com/68372094/150241439-105f7d46-38d8-4fb2-9c4f-788bfc46fcc4.png)
 
+## 캐시와 파이프라인
+	cpu 실행 순서 fetch decode excecute write-back 
+컴파일러가 효율적인 작업을 먼저할 수도 있다.
+
+## 메모리 모델
+여러 쓰레드가 동일 메모리에 동시 접근 그 중 write가 문제가 된다
+atomic is_lock_free 원자적으로 처리되었는가?
+
