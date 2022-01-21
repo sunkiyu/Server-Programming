@@ -359,3 +359,8 @@ int main()
 	}
 }
 ```
+* thread local storage 사용 안했을 경우
+![image](https://user-images.githubusercontent.com/68372094/150449289-d3568e94-52dc-40e9-84dd-b87e0fc66b38.png)
+* thread local storage 사용 했을 경우
+![image](https://user-images.githubusercontent.com/68372094/150449405-146901a8-654d-4842-b64d-a88a47a59d42.png)
+
