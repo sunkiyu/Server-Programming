@@ -259,7 +259,7 @@ int main(int argc, char *argv[])
 ```
 ![image](https://user-images.githubusercontent.com/68372094/150241439-105f7d46-38d8-4fb2-9c4f-788bfc46fcc4.png)
 
-## 가시성/코드-
+## 가시성/코드 재배치
 * CPU 처리 순서 
 > 1. Fetch 
 > 2. Decode 
