@@ -54,7 +54,7 @@
 * Lock 순서를 지켜준다.   
 	=>A쓰레드에서 mutexA -> mutexB 순서로 Lock을 했을 경우 B쓰레드도 mutexA->mutexB 순서로 Lock을 한다.
 * 개발단계에서는 일어나지 않다가 배포 후 다수의 사용자가 사용할 경우 간혹가다가 일어나는 경우가 대다수다. 
-```
+```cpp
 mutex m1;
 mutex m2;
 std::lock(m1, m2); //교착상태 회피 알고리즘을 사용하여 lock 해준다.	
@@ -79,7 +79,7 @@ unique_ptr, shared_ptr, lock_guard 등으로 이러한 문제들을 예방할 �
 * 다른 쓰레드가 lock하는 시간이 짧을 때 유용하다. 루프를 돌면서 CPU를 양보하지 않으므로 불필요한 컨텍스트 스위칭을 막을 수 있다.
 * 다른 쓰레드가 lock하는 시간이 길 경우 루프로 인해 CPU 점유율이 높아질 수 있다.(Busy Waiting)   	
 * ##### volatile => 컴파일러 최적화 수행하지 마라
-```
+```cpp
 int32 a=0;
 a=1;
 a=2;
@@ -113,7 +113,7 @@ Release 모드 최적화 적용된다.
 -compare_exchange_strong
 -compare_exchange_weak
 =>두 함수가 모두 atomic 한 CAS 작업을 제공한다.
-```
+```cpp
 class CASExample 
 {
 private:
@@ -148,7 +148,7 @@ compare_exchange_strong, compare_exchange_weak 함수가 원자적인 체크-액
 자동 Reset 이벤트
 수동 Reset 이벤트
 	
-```
+```cpp
 void Producer()
 {
 	while (true)
@@ -205,7 +205,7 @@ void Consumer()
 비동기 - 함수 호출 후 바로 리턴한다(관심있는 이벤트를 운영체제에 맡기거나 등록해놓는다),   백그라운드에서 I/O작업 및 로직처리를 한 뒤 완료되면 프로그램에 알린다.
 * deferred ->lazy evaluation 지연해서 실행
 * async ->별도의 쓰레드를 만들어서 실행
-```
+```cpp
 std::future<int64> future = std::async(std::launch::async, Process);
 	
 future.wait(); // future.wait_for(INFINITE);
@@ -225,7 +225,7 @@ int64 sum = future.get();
 * Spatial Locality => 사용된 데이터의 주변 데이터는 사용될 확률이 높다.
 	
 * Spatial Locality의 예(Cache Friendly Code)
-```
+```cpp
 INT32 buffer[10000][10000];
 int main(int argc, char *argv[])
 {
@@ -273,7 +273,7 @@ int main(int argc, char *argv[])
 	  이 때 시간차이와 DataRace등 경합 상태가 발생하여 쓰레드 별로 서로 다른 값을 바라 볼 수 있다.
 * 코드 재배치 - 컴파일러와 CPU가 효율적인 작업이라고 판단하여 최적화 시켜 코드 재배치가 일어날 수 있는데 이로 인해 의도하는 값과 다른 값이 나올 수 있다.
 * 코드 재배치의 예
-```
+```cpp
 int32 x = 0,y = 0,r1 = 0,r2 = 0;
 
 volatile bool ready;
@@ -369,7 +369,7 @@ bool prev = flag.exchange(true);
 * 쓰레드 마다 독립적으로 가지고 있는 공간(스레드별로 독립적으로 가지고 있는 스택영역과 같다)   
 * Heap이나 데이터영역(static 변수,전역변수)가 있는 공간에서 큰 덩어리를 떼어다가 TLS 영역에서 계산한다.   
 * 매번 읽고/쓰기가 발생할 때마다 heap/데이터 영역에 위해 쓰레드가 몰리면 데이터 경합이 커지기 때문
-```
+```cpp
 //windows 용 TLS
 _declspec(thread) int32 value;
 //c++ 11
