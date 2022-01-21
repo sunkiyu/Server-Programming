@@ -11,7 +11,7 @@
   * [Future](#Future)
   * [Cache](#Cache)
   * [가시성/코드 재배치](#가시성과-코드-재배치)
-  * [Thread Local Stoage(TLS)](#Thread-Local-Stoage(TLS))
+  * [Thread Local Stoage(TLS)](#Thread-Local-Stoage)
 * * *
 ## 서버란
 -다른 컴퓨터에서 연결 가능하도록 상시 실행대기하며 서비스를 제공하는 프로그램
@@ -321,7 +321,8 @@ int main()
 여러 쓰레드가 동일 메모리에 동시 접근 그 중 write가 문제가 된다
 atomic is_lock_free 원자적으로 처리되었는가?
 
-## Thread Local Stoage(TLS)
+## Thread Local Stoage
+### TLS
 * 쓰레드들이 하나의 로직에 몰리지 않게 해야한다.   
 * 쓰레드 마다 독립적으로 가지고 있는 공간(스레드별로 독립적으로 가지고 있는 스택영역과 같다)   
 * Heap이나 데이터영역(static 변수,전역변수)가 있는 공간에서 큰 덩어리를 떼어다가 TLS 영역에서 계산한다.   
@@ -360,8 +361,8 @@ int main()
 	}
 }
 ```
-* thread local storage 사용 안했을 경우
+* thread local storage 사용 안했을 경우   
 ![image](https://user-images.githubusercontent.com/68372094/150449289-d3568e94-52dc-40e9-84dd-b87e0fc66b38.png)
-* thread local storage 사용 했을 경우
+* thread local storage 사용 했을 경우   
 ![image](https://user-images.githubusercontent.com/68372094/150449405-146901a8-654d-4842-b64d-a88a47a59d42.png)
 
