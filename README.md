@@ -11,6 +11,7 @@
   * [Future](#Future)
   * [Cache](#Cache)
   * [가시성/코드 재배치](#가시성과-코드-재배치)
+  * [Thread Local Stoage(TLS)](#Thread-Local-Stoage(TLS))
 * * *
 ## 서버란
 -다른 컴퓨터에서 연결 가능하도록 상시 실행대기하며 서비스를 제공하는 프로그램
