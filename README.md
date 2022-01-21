@@ -10,7 +10,7 @@
   * [Condition Variable](#Condition-Variable)
   * [Future](#Future)
   * [Cache](#Cache)
-  * [Cache/PipeLine](#캐시와-파이프라인)
+  * [가시성/코드 재배치](#가시성/코드-)
 * * *
 ## 서버란
 -다른 컴퓨터에서 연결 가능하도록 상시 실행대기하며 서비스를 제공하는 프로그램
@@ -259,7 +259,7 @@ int main(int argc, char *argv[])
 ```
 ![image](https://user-images.githubusercontent.com/68372094/150241439-105f7d46-38d8-4fb2-9c4f-788bfc46fcc4.png)
 
-## 캐시와 파이프라인
+## 가시성/코드-
 * CPU 처리 순서 
 > 1. Fetch 
 > 2. Decode 
