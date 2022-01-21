@@ -259,11 +259,11 @@ int main(int argc, char *argv[])
 ![image](https://user-images.githubusercontent.com/68372094/150241439-105f7d46-38d8-4fb2-9c4f-788bfc46fcc4.png)
 
 ## 캐시와 파이프라인
-* cpu 처리 순서 
-> 1. fetch 
-  2. decode 
-  3. excecute 
-  4. write-back
+* CPU 처리 순서 
+> 1. Fetch 
+> 2. Decode 
+> 3. Excecute 
+> 4. Write-Back
 
 * 컴파일러와 CPU가 최적화를 위해 가시성과 코드 재배치를 수행하여 의도하는 값과 다른 값이 나올 수 있다.
 * 가시성 - 멀티 코어 환경에서는 캐시와 레지스트리가 여러개 존재하여 멀티쓰레드가 공유 변수에 접근할 때 서로 다른 캐시와 레지스터에 읽고/쓰기 할 수 있는데
