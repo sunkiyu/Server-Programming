@@ -341,9 +341,9 @@ bool prev = flag.exchange(true);
 ```
 ### Memory model 정책
 
-1.Sequentially Consistent(seq_cst)
-2.Acquire-release(consume,acquire,release,acq_rel)
-3.Relaxed(relaxed)
+#### 1.Sequentially Consistent(seq_cst)   
+#### 2.Acquire-release(consume,acquire,release,acq_rel)   
+#### 3.Relaxed(relaxed)      
 
 * __seq_cst__(가장 엄격) 컴파일러 최적화 여지 적음 직관적, atomic 동작원리   
 -가시성 코드재배치 바로 해결
@@ -355,6 +355,7 @@ bool prev = flag.exchange(true);
 
 * __consume__    
 -사용 빈도 낮다.   
+
 * __relaxed__   
 -자유롭다      
 -컴파일러 최적화 여지 많음 직관적이지 않음      
