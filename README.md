@@ -13,7 +13,7 @@
   * [가시성/코드 재배치](#가시성과-코드-재배치)
   * [메모리 모델](#메모리-모델)
   * [Thread Local Stoage(TLS)](#Thread-Local-Stoage)
-  * [Lock-Based Stack](#Lock-Based-Stack)
+  * [Lock Based Stack](#Lock-Based-Stack)
 * * *
 ## 서버란
 -다른 컴퓨터에서 연결 가능하도록 상시 실행대기하며 서비스를 제공하는 프로그램
@@ -411,7 +411,7 @@ int main()
 * thread local storage 사용 했을 경우   
 ![image](https://user-images.githubusercontent.com/68372094/150449405-146901a8-654d-4842-b64d-a88a47a59d42.png)
 
-##Lock-Based Stack
+##Lock Based Stack   
 ###Push & Pop의 예   
 				 
 ```cpp
