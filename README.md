@@ -413,6 +413,7 @@ int main()
 ![image](https://user-images.githubusercontent.com/68372094/150449405-146901a8-654d-4842-b64d-a88a47a59d42.png)
 
 ## Lock-Based Stack   
+### * Lock을 걸지 않은 Stack과 Queue는 멀티스레드 환경에서 비어있는 값을 참조하는 Crash가 발생할 가능성이 있다.
 ### Push & Pop의 예   
 				 
 ```cpp
@@ -448,6 +449,7 @@ void WaitPop(T& value)
 }
 ```   
 ## Lock-Based Queue   
+### * Lock을 걸지 않은 Stack과 Queue는 멀티스레드 환경에서 비어있는 값을 참조하는 Crash가 발생할 가능성이 있다.
 ### Push & Pop의 예   
 				 
 ```cpp
