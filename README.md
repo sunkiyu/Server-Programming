@@ -15,6 +15,7 @@
   * [Thread Local Stoage(TLS)](#Thread-Local-Stoage)
   * [Lock-Based Stack](#Lock-Based-Stack)
   * [Lock-Based Queue](#Lock-Based-Queue)
+  * [Lock-Free-Stack#1](#Lock-Free-Stack1)
 * * *
 ## 서버란
 -다른 컴퓨터에서 연결 가능하도록 상시 실행대기하며 서비스를 제공하는 프로그램
@@ -483,3 +484,4 @@ void WaitPop(T& value)
 		_queue.pop();
 	}
 ```
+# Lock-Free Stack1
