@@ -13,6 +13,7 @@
   * [가시성/코드 재배치](#가시성과-코드-재배치)
   * [메모리 모델](#메모리-모델)
   * [Thread Local Stoage(TLS)](#Thread-Local-Stoage)
+  * [Lock-Based Stack](#Lock-Based-Stack)
 * * *
 ## 서버란
 -다른 컴퓨터에서 연결 가능하도록 상시 실행대기하며 서비스를 제공하는 프로그램
@@ -410,3 +411,38 @@ int main()
 * thread local storage 사용 했을 경우   
 ![image](https://user-images.githubusercontent.com/68372094/150449405-146901a8-654d-4842-b64d-a88a47a59d42.png)
 
+##Lock-Based Stack
+###Push & Pop의 예   
+				 
+```cpp
+void Push(T value)
+{
+	//Lock 을 걸고
+	lock_guard<mutex> lock(_mutex);
+	//우측값으로 변환후 넣는다.
+	_stack.push(std::move(value));
+	_condVar.notify_one();
+}
+
+bool TryPop(T &value)
+{
+	//Lock 을 걸고
+	lock_guard<mutex> lock(_mutex);
+	if (_stack.empty())
+		return false;
+	//
+	value = std::move(_stack.top());
+	_stack.pop();
+	return true;
+}
+
+void WaitPop(T& value)
+{
+	unique_lock<mutex> lock(_mutex);
+	//조건 만족하지  않으면 Lock 을 풀고 잠든다.
+	//시그널이 오면 Lock을 잡고 실행
+	_condVar.wait(lock, [this] {return _stack.empty() == false; });
+	value = std::move(_stack.top());
+	_stack.pop();
+}
+```
