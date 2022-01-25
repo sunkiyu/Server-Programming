@@ -411,7 +411,7 @@ int main()
 * thread local storage 사용 했을 경우   
 ![image](https://user-images.githubusercontent.com/68372094/150449405-146901a8-654d-4842-b64d-a88a47a59d42.png)
 
-## Lock Based Stack   
+## Lock-Based Stack   
 ### Push & Pop의 예   
 				 
 ```cpp
