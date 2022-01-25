@@ -484,4 +484,4 @@ void WaitPop(T& value)
 		_queue.pop();
 	}
 ```
-# Lock-Free Stack1
+## Lock-Free Stack1
