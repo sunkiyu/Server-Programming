@@ -14,6 +14,7 @@
   * [메모리 모델](#메모리-모델)
   * [Thread Local Stoage(TLS)](#Thread-Local-Stoage)
   * [Lock-Based Stack](#Lock-Based-Stack)
+  * [Lock-Based Queue](#Lock-Based-Queue)
 * * *
 ## 서버란
 -다른 컴퓨터에서 연결 가능하도록 상시 실행대기하며 서비스를 제공하는 프로그램
@@ -445,4 +446,38 @@ void WaitPop(T& value)
 	value = std::move(_stack.top());
 	_stack.pop();
 }
+```   
+## Lock-Based Queue   
+### Push & Pop의 예   
+				 
+```cpp
+	void Push(T value)
+	{
+		lock_guard<mutex> lock(_mutex);
+		_queue.push(std::move(value));
+		_condVar.notify_one();
+	}
+
+	bool TryPop(T &value)
+	{
+		//Lock 을 걸고
+		lock_guard<mutex> lock(_mutex);
+		if (_queue.empty())
+			return false;
+
+		//
+		value = std::move(_queue.front());
+		_queue.pop();
+		return true;
+	}
+
+	void WaitPop(T& value)
+	{
+		unique_lock<mutex> lock(_mutex);
+		//조건 만족하지  않으면 Lock 을 풀고 잠든다.
+		//시그널이 오면 Lock을 잡고 실행
+		_condVar.wait(lock, [this] {return _queue.empty() == false; });
+		value = std::move(_queue.front());
+		_queue.pop();
+	}
 ```
