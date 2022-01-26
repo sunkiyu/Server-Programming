@@ -530,6 +530,9 @@ private:
 	mutex _mutex;
 	condition_variable _condVar;
 };
-
-## Lock-Free Stack2
+```
+## Lock-Free Stack2   
+```cpp
+	
+```
 
