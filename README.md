@@ -533,6 +533,6 @@ private:
 ```
 ## Lock-Free Stack2   
 ```cpp
-	
+unique_lock을 사용
 ```
 
