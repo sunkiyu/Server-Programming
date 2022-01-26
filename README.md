@@ -16,6 +16,7 @@
   * [Lock-Based Stack](#Lock-Based-Stack)
   * [Lock-Based Queue](#Lock-Based-Queue)
   * [Lock-Free-Stack#1](#Lock-Free-Stack1)
+  * [Lock-Free-Stack#2](#Lock-Free-Stack2)
 * * *
 ## 서버란
 -다른 컴퓨터에서 연결 가능하도록 상시 실행대기하며 서비스를 제공하는 프로그램
@@ -529,3 +530,5 @@ private:
 	mutex _mutex;
 	condition_variable _condVar;
 };
+
+## Lock-Free Stack2
