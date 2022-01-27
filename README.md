@@ -5,7 +5,7 @@
   * [멀티쓰레드](#멀티쓰레드)
   * [DeadLock](#DeadLock)
   * [SpinLock](#SpinLock)
-  * [CAS(Compare And Swap)][#CAS]
+  * [CAS(Compare_And_Swap)][#CAS]
   * [Sleep](#Sleep)
   * [Event](#Event)
   * [Condition Variable](#Condition-Variable)
