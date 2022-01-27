@@ -17,6 +17,7 @@
   * [Lock-Based Queue](#Lock-Based-Queue)
   * [Lock-Free-Stack#1](#Lock-Free-Stack1)
   * [Lock-Free-Stack#2](#Lock-Free-Stack2)
+  * [ThreadManager](#ThreadManager)
 * * *
 ## 서버란
 -다른 컴퓨터에서 연결 가능하도록 상시 실행대기하며 서비스를 제공하는 프로그램
@@ -536,3 +537,5 @@ private:
 unique_lock을 사용
 ```
 
+## ThreadManager
+	
