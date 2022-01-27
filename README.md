@@ -5,6 +5,7 @@
   * [멀티쓰레드](#멀티쓰레드)
   * [DeadLock](#DeadLock)
   * [SpinLock](#SpinLock)
+  * [CAS(Compare And Swap)][#CAS]
   * [Sleep](#Sleep)
   * [Event](#Event)
   * [Condition Variable](#Condition-Variable)
@@ -114,7 +115,7 @@ volatile int32 a = 0;
 cout << a << endl;
 ```   
 Release 모드 최적화 적용된다.
-* CAS(Compare And Swap)   
+## CAS  
 -compare_exchange_strong
 -compare_exchange_weak
 =>두 함수가 모두 atomic 한 CAS 작업을 제공한다.
