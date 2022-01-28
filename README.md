@@ -107,8 +107,8 @@ private:
 };
 ```   
 >SpinLock을 개발자가 Custom으로 구현시 BasicLockable 요구사항을 충족 시켜야한다. 
->BasicLockable을 lock 과 unlock을 구현한 클래스 등을 말한다. cppreference에 자세한 내용이 나와있다.
->[BasicLockable cpp](https://en.cppreference.com/w/cpp/named_req/BasicLockable)
+>BasicLockable을 lock 과 unlock을 구현한 클래스 등을 말한다. cppreference에 자세한 내용이 나와있다.   
+>[BasicLockable이란](https://en.cppreference.com/w/cpp/named_req/BasicLockable)   
 * ##### volatile => 컴파일러 최적화 수행하지 마라
 ```cpp
 int32 a=0;
