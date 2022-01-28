@@ -83,7 +83,32 @@ unique_ptr, shared_ptr, lock_guard 등으로 이러한 문제들을 예방할 �
 * 스핀락이라는 이름은 락을 획득할 때까지 해당 스레드가 빙빙 돌고 있다(spinning)는 것을 의미
 * 다른 쓰레드가 lock을 소유중이면 lock이 반환될 때까지 계속 확인하며 기다린다.
 * 다른 쓰레드가 lock하는 시간이 짧을 때 유용하다. 루프를 돌면서 CPU를 양보하지 않으므로 불필요한 컨텍스트 스위칭을 막을 수 있다.
-* 다른 쓰레드가 lock하는 시간이 길 경우 루프로 인해 CPU 점유율이 높아질 수 있다.(Busy Waiting)   	
+* 다른 쓰레드가 lock하는 시간이 길 경우 루프로 인해 CPU 점유율이 높아질 수 있다.(Busy Waiting)   
+```cpp
+class SpinLock
+{
+public:
+	void lock()
+	{
+		bool expected=false, desired = true;
+
+		while(_locked.compare_exchange_strong(expected, desired) == false)
+		{
+			expected = false;
+		}
+	}
+
+	void unlock()
+	{
+		_locked.store(false);
+	}
+private:
+	atomic<bool> _locked = false;
+};
+```   
+>SpinLock을 개발자가 Custom으로 구현시 BasicLockable 요구사항을 충족 시켜야한다. 
+>BasicLockable을 lock 과 unlock을 구현한 클래스 등을 말한다. cppreference에 자세한 내용이 나와있다.
+>[BasicLockable cpp](https://en.cppreference.com/w/cpp/named_req/BasicLockable)
 * ##### volatile => 컴파일러 최적화 수행하지 마라
 ```cpp
 int32 a=0;
