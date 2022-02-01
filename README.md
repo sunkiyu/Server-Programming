@@ -283,6 +283,7 @@ void Consumer()
 * CloseHandle을 호출하게 되면 UsageCount가 감소하게 되는데 UsageCount가 0이 되었을때 해당 커널 오브젝트가 소멸된다.   
 * Handle을 커널 오브젝트 정보를 참조하는 역할을 한다.
 ## Condition Variable   
+* Event는 커널 영역에서 실행 Condition Variable은 유저 영역에서 실행된다.
 * condition_variable 클래스는 멀티쓰레드 환경에서 대기와 통지를 통해 공유 변수를 안전하게 수정할 수 있다.   
 * 보통 뮤텍스 함께 사용하여 Thread Safe하다.
 * condition_variable 클래스는 다른 스레드가 공유 변수(조건)를 수정하고, condition_variable을 알릴 때까지    
