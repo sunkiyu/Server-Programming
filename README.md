@@ -20,7 +20,7 @@
   * [Lock-Free-Stack#2](#Lock-Free-Stack2)
   * [ThreadManager](#ThreadManager)
   * [Reader-Writer-Lock](#Reader-Writer-Lock)
-  * [Dead-Lock 탐지](#Dead-Lock-탐지)
+  * [Dead-Lock 탐지](#Dead-Lock-Detection)
 * * *
 ## 서버란
 -다른 컴퓨터에서 연결 가능하도록 상시 실행대기하며 서비스를 제공하는 프로그램
@@ -662,7 +662,7 @@ private:
 ```
 ## Reader-Writer-Lock
 
-## Dead-Lock 
+## Dead-Lock Detection
 데드락 상황 nullptr 체크 누락이 거의 0 순위
 그래프 사이클 판별
 	-순방향 간선
