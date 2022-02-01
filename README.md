@@ -629,7 +629,25 @@ private:
 unique_lock을 사용
 ```
 
-## ThreadManager
+## ThreadManager   
+스레드를 생성 및 파기 관리한다.
+```cpp
+class ThreadManager 
+{
+public:
+	ThreadManager();
+	~ThreadManager();
+
+	void Launch(function<void(void)> callback);
+	void Join();
+
+	static void InitTLS();
+	static void DestroyTLS();
+private:
+	Mutex			_lock;
+	vector<thread> _threads;
+};
+```
 	
 데드락 상황 nullptr 체크 누락이 거의 0 순위
 그래프 사이클 판별
