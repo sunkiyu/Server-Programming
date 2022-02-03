@@ -857,5 +857,8 @@ int main(int argc, char *argv[])
 ```
 ![image](https://user-images.githubusercontent.com/68372094/152287019-2b2ddfc7-e8c8-4377-9fde-fee25cf7d056.png)   
 hardware_concurrency를 통해 PC코어 개수를 확인해보니 4개였다. 따라서 스레드를 4개 이상 생성하는 것은 이 프로젝트에서 큰 의미가 없어보이므로 스레드 4개를 생성후 실험하였다.   
-9087ms(약 9초)로 6초 가량 시간이 단축되는 것을 확인 할 수 있었다.  
+9087ms(약 9초)로 6초 가량 시간이 단축되는 것을 확인 할 수 있었다.   
+							 ![image](https://user-images.githubusercontent.com/68372094/152288482-1b3e1993-226c-4efb-8627-e4817dca3f05.png)   
+4코어를 모두 사용하고 있다.
+
 	
