@@ -21,6 +21,7 @@
   * [ThreadManager](#ThreadManager)
   * [Reader-Writer-Lock](#Reader-Writer-Lock)
   * [Dead-Lock 탐지](#Dead-Lock-Detection)
+  * [멀티스레드 소수구하기 문제](#멀티스레드-소수-구하기)
 * * *
 ## 서버란
 -다른 컴퓨터에서 연결 가능하도록 상시 실행대기하며 서비스를 제공하는 프로그램
@@ -763,4 +764,49 @@ void Lock::ReadUnlock()
 	-교차 간선
 -역방향 간선
 -
+## 멀티스레드 소수 구하기   
+```cpp
+#include <atomic>
+#include <windows.h>
+#include <iostream>
+#include <thread>
+using namespace std;
+atomic_int ssAtomic;
+
+void ssCount(int start,int end)
+{
+    for(int num =start; num<=end; num++)
+    {
+        if(num==1){
+            continue;
+        }
+        bool isss= true;
+        for(int i=2; i<num; i++)
+        {
+            if(!(num%i)){
+                isss = false;
+                break;
+            };
+        }
+        if(!isss)continue;
+        ssAtomic++;
+    }
+}
+
+int main(int argc, char *argv[])
+{
+   int start = GetTickCount();
+   thread t1(ssCount,1,1000000);
+   t1.join();
+   int end = GetTickCount();
+   
+   cout<<"Total= "<<ssAtomic<<" "<<end-start<<"ms"<<endl;
+   return 0;
+}
+```   
+![image](https://user-images.githubusercontent.com/68372094/152285760-ffc3039e-8525-4565-bc6b-a03eaf32f0fb.png)
+싱글스레드 환경에서는 300,000까지 소수의 개수를 구하는데 15875ms(약15초)의 시간이 소요된다.   
+```cpp
+	
+```
 	
