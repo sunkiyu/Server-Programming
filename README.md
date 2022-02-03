@@ -796,7 +796,7 @@ void ssCount(int start,int end)
 int main(int argc, char *argv[])
 {
    int start = GetTickCount();
-   thread t1(ssCount,1,1000000);
+   thread t1(ssCount,1,300000);
    t1.join();
    int end = GetTickCount();
    
@@ -847,7 +847,7 @@ int main(int argc, char *argv[])
 	 
    for(int i=0; i<4; i++)
    {
-   		threads[i].join();
+   	threads[i].join();
    }
    int end = GetTickCount();
    
