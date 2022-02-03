@@ -804,7 +804,7 @@ int main(int argc, char *argv[])
    return 0;
 }
 ```   
-![image](https://user-images.githubusercontent.com/68372094/152285760-ffc3039e-8525-4565-bc6b-a03eaf32f0fb.png)
+![image](https://user-images.githubusercontent.com/68372094/152285760-ffc3039e-8525-4565-bc6b-a03eaf32f0fb.png)   
 싱글스레드 환경에서는 300,000까지 소수의 개수를 구하는데 15875ms(약15초)의 시간이 소요된다.      
 ```cpp
 #include <windows.h>
