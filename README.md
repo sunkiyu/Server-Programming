@@ -862,5 +862,11 @@ hardware_concurrency를 통해 PC코어 개수를 확인해보니 4개였다. �
 4코어를 모두 높은 사용률을 나타낸다. 4개 코어가 4개의 스레드를 담당하기 때문   
 ![image](https://user-images.githubusercontent.com/68372094/152288999-4d71e802-b26b-48e7-9cab-53513d76a97a.png)   
 싱글스레드일 경우 컨텍스트 스위칭을 통해 CPU부하를 나누기 때문에 부하가 덜하다. 4개의 코어가 1개의 스레드를 담당
+							 
+							 
+							 unique_ptr은 포인터와 거의 같다. 복사하는 부분이 막혀있다. std::move를 통해서 대입 연산 가능
+							 weak_ptr 순환 문제 해결.
+							 shared_ptr 사용시 ref카운팅도 같이 관리된다.
+							 weak_ptr은 refCount만 체크한다. 수명주기에는 영향x
 
 	
