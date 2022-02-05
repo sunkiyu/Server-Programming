@@ -869,5 +869,5 @@ hardware_concurrency를 통해 PC코어 개수를 확인해보니 4개였다. �
 							 weak_ptr 순환 문제 해결.
 							 shared_ptr 사용시 ref카운팅도 같이 관리된다.
 							 weak_ptr은 refCount만 체크한다. 수명주기에는 영향x
-## 레퍼런스 
+## 레퍼런스-카운팅 
 	
