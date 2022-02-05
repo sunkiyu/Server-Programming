@@ -22,6 +22,7 @@
   * [Reader-Writer-Lock](#Reader-Writer-Lock)
   * [Dead-Lock 탐지](#Dead-Lock-Detection)
   * [멀티스레드 소수구하기 문제](#멀티스레드-소수-구하기)
+  * [레퍼런스 카운팅](#레퍼런스-카운팅)
 * * *
 ## 서버란
 -다른 컴퓨터에서 연결 가능하도록 상시 실행대기하며 서비스를 제공하는 프로그램
@@ -868,5 +869,5 @@ hardware_concurrency를 통해 PC코어 개수를 확인해보니 4개였다. �
 							 weak_ptr 순환 문제 해결.
 							 shared_ptr 사용시 ref카운팅도 같이 관리된다.
 							 weak_ptr은 refCount만 체크한다. 수명주기에는 영향x
-
+## 레퍼런스 
 	
