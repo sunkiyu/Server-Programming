@@ -760,13 +760,12 @@ void Lock::ReadUnlock()
 ```
 
 
-## Dead-Lock Detection
-데드락 상황 nullptr 체크 누락이 거의 0 순위
-그래프 사이클 판별
-	-순방향 간선
-	-교차 간선
--역방향 간선
--
+## Dead-Lock Detection   
+* 데드락 상황은 nullptr 체크 누락이 거의 0 순위로 제일 많은 원인이 된다.   
+* 데드락은 그래프 알고리즘의 사이클 발생 여부로 판별할 수 있다.   
+- 순방향 간선   
+- 교차 간선   
+- 역방향 간선   
 ## 멀티스레드 소수 구하기   
 ```cpp
 #include <atomic>
@@ -864,13 +863,11 @@ hardware_concurrency를 통해 PC코어 개수를 확인해보니 4개였다. �
 ![image](https://user-images.githubusercontent.com/68372094/152288482-1b3e1993-226c-4efb-8627-e4817dca3f05.png)   
 4코어를 모두 높은 사용률을 나타낸다. 4개 코어가 4개의 스레드를 담당하기 때문   
 ![image](https://user-images.githubusercontent.com/68372094/152288999-4d71e802-b26b-48e7-9cab-53513d76a97a.png)   
-싱글스레드일 경우 컨텍스트 스위칭을 통해 CPU부하를 나누기 때문에 부하가 덜하다. 4개의 코어가 1개의 스레드를 담당
-							 
-							 
-							 unique_ptr은 포인터와 거의 같다. 복사하는 부분이 막혀있다. std::move를 통해서 대입 연산 가능
-							 weak_ptr 순환 문제 해결.
-							 shared_ptr 사용시 ref카운팅도 같이 관리된다.
-							 weak_ptr은 refCount만 체크한다. 수명주기에는 영향x
+싱글스레드일 경우 컨텍스트 스위칭을 통해 CPU부하를 나누기 때문에 부하가 덜하다. 4개의 코어가 1개의 스레드를 담당   
 ## 레퍼런스-카운팅   
+* unique_ptr은 C스타일 포인터와 거의 같다. 차이점은 복사하는 부분(복사 생성자)이 막혀있다. std::move를 통해서(이동 대입 연산자) 대입 연산 가능   
+* weak_ptr은 shared_ptr의 순환 참조 문제 해결.   
+* shared_ptr 사용시 reference Count도 같이 관리된다.   
+* weak_ptr은 reference Count만 체크한다. 객체의 수명 주기에는 영향을 미치지 않는다.   
 ## Allocator   
 ## Stomp-Allocator
