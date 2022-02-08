@@ -12,10 +12,10 @@
   * [Future](https://github.com/sunkiyu/Server-Programming/blob/bb8922b00295ba37977bdfd6eefc5149f21121d7/Future/README.md)
   * [Cache](https://github.com/sunkiyu/Server-Programming/blob/25ee0f9553e0666642a3705734ce01137a60ccac/Cache/README.md)
   * [가시성/코드 재배치](https://github.com/sunkiyu/Server-Programming/blob/1d09a1dc94c99a6e2145a2052d3aebb79dbe67c6/%EA%B0%80%EC%8B%9C%EC%84%B1-%EC%BD%94%EB%93%9C%20%EC%9E%AC%EB%B0%B0%EC%B9%98/README.md)
-  * [메모리 모델](#메모리-모델)
+  * [메모리 모델](https://github.com/sunkiyu/Server-Programming/blob/1daf24d651a6544c348e586dde454bfeedcd97ef/Memory%20Model/README.md)
   * [Thread Local Stoage(TLS)](https://github.com/sunkiyu/Server-Programming/blob/bdb74293bc6638e5ffad988c3ed7065658f5d692/TLS/README.md)
-  * [Lock-Based Stack](#Lock-Based-Stack)
-  * [Lock-Based Queue](#Lock-Based-Queue)
+  * [Lock-Based Stack](https://github.com/sunkiyu/Server-Programming/blob/39b0bcae6e48a495601073a1005a9830f67982fa/LockBased%20Stack%20Queue/README.md)
+  * [Lock-Based Queue](https://github.com/sunkiyu/Server-Programming/blob/39b0bcae6e48a495601073a1005a9830f67982fa/LockBased%20Stack%20Queue/README.md)
   * [Lock-Free-Stack#1](#Lock-Free-Stack1)
   * [Lock-Free-Stack#2](#Lock-Free-Stack2)
   * [ThreadManager](#ThreadManager)
@@ -61,125 +61,6 @@
   다른 쓰레드도 동시에 작업을 하기 때문에 덮어쓰기 문제가 발생하여 원하는 값이 나오지 않을 수 있다.   
   interlockedincrement 함수를 사용하거나 atomic을 include 하여 atomic<int32>와 같이 사용하면 해당 문제를 해결할 수 있다.       
   ->속도 저하 문제가 생길 수 있으므로 꼭 필요한 경우에만 사용하자   
-## 메모리 모델
-* 여러 쓰레드가 동일 메모리에 동시 접근 그 중 write가 문제가 된다
-* atomic is_lock_free 원자적으로 처리되었는가?
-```cpp
-atomic<bool> flag;
-//true =>원래 원자적으로 처리되었다.(된다) 
-//false 원자적 처리가 필요하다.
-flag.is_lock_free();
-
-//flag 값을 prev에 넣기 전에 다른 쓰레드가 수정할 수 있다.
-//이전 값을 넣고 true로 바꾸겠다. 아토믹한 연산
-bool prev = flag.exchange(true);
-	
-//CAS(compare and swap) 조건부 수정
-{
-	//expected 예상한값. flag와 expected 가 같은 값인가? 그럼 desired로 바꾼다.
-	bool expected = false;
-	bool desired = true;
-	flag.compare_exchange_strong(expected, desired);
-}
-```
-### Memory model 정책
-
-#### 1.Sequentially Consistent(seq_cst)
-#### 2.Acquire-release(consume,acquire,release,acq_rel)
-#### 3.Relaxed(relaxed)
-
-* __seq_cst__(가장 엄격)   
--컴파일러 최적화 여지 적음 직관적, atomic 동작원리   
--가시성 코드재배치 바로 해결
-	
-* __acquire_release__ 핵심   
--seq_cst보다 덜 엄격하다   
--release 명령 이전의 메모리 명령들이 해당 명령 이후로 재배치 되는 것을 금지   
--acquire 로 같은 변수를 읽는 스레드가 있다면 release 이전의 명령들이 acquire하는 순간에 관찰 가능 가시성 보장   
-
-* __consume__    
--사용 빈도 낮다.   
-
-* __relaxed__   
--자유롭다      
--컴파일러 최적화 여지 많음 직관적이지 않음      
--코드재배치 가시성 해결 못한다.   
--가장 기본 조건 동일 객체에 대한 동일 관전 순서만 보장   
-
-* Intel, AMD의 경우 순차적 일관성을 보장하므로 seq_cst를 써도 별다른 부하 없음   
-* ARM의 경우 차이가 있다.   
-
-## Lock-Based Stack   
-### * Lock을 걸지 않은 Stack과 Queue는 멀티스레드 환경에서 비어있는 값을 참조하는 Crash가 발생할 가능성이 있다.
-### Push & Pop의 예   
-				 
-```cpp
-void Push(T value)
-{
-	//Lock 을 걸고
-	lock_guard<mutex> lock(_mutex);
-	//우측값으로 변환후 넣는다.
-	_stack.push(std::move(value));
-	_condVar.notify_one();
-}
-
-bool TryPop(T &value)
-{
-	//Lock 을 걸고
-	lock_guard<mutex> lock(_mutex);
-	if (_stack.empty())
-		return false;
-	//
-	value = std::move(_stack.top());
-	_stack.pop();
-	return true;
-}
-
-void WaitPop(T& value)
-{
-	unique_lock<mutex> lock(_mutex);
-	//조건 만족하지  않으면 Lock 을 풀고 잠든다.
-	//시그널이 오면 Lock을 잡고 실행
-	_condVar.wait(lock, [this] {return _stack.empty() == false; });
-	value = std::move(_stack.top());
-	_stack.pop();
-}
-```   
-## Lock-Based Queue   
-### * Lock을 걸지 않은 Stack과 Queue는 멀티스레드 환경에서 비어있는 값을 참조하는 Crash가 발생할 가능성이 있다.
-### Push & Pop의 예   
-				 
-```cpp
-	void Push(T value)
-	{
-		lock_guard<mutex> lock(_mutex);
-		_queue.push(std::move(value));
-		_condVar.notify_one();
-	}
-
-	bool TryPop(T &value)
-	{
-		//Lock 을 걸고
-		lock_guard<mutex> lock(_mutex);
-		if (_queue.empty())
-			return false;
-
-		//
-		value = std::move(_queue.front());
-		_queue.pop();
-		return true;
-	}
-
-	void WaitPop(T& value)
-	{
-		unique_lock<mutex> lock(_mutex);
-		//조건 만족하지  않으면 Lock 을 풀고 잠든다.
-		//시그널이 오면 Lock을 잡고 실행
-		_condVar.wait(lock, [this] {return _queue.empty() == false; });
-		value = std::move(_queue.front());
-		_queue.pop();
-	}
-```
 ## Lock-Free Stack1
 ```cpp
 template<typename T>
