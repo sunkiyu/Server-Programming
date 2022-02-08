@@ -6,11 +6,11 @@
   * [DeadLock](https://github.com/sunkiyu/Server-Programming/blob/ea5804437b3fc1b0bc5c0e74fe50ab0eae16b99e/DeadLock/README.md)
   * [SpinLock](https://github.com/sunkiyu/Server-Programming/blob/514193b66bb37ae9b7a6032012482cda0f6a470c/SpinLock/README.md)
   * [CAS(Compare And Swap)](https://github.com/sunkiyu/Server-Programming/blob/083f88889266a8e1e7d28d7cb19140e4b39d4522/CAS/README.md)
-  * [Sleep](#Sleep)
-  * [Event](#Event)
-  * [Condition Variable](#Condition-Variable)
-  * [Future](#Future)
-  * [Cache](#Cache)
+  * [Sleep](https://github.com/sunkiyu/Server-Programming/blob/35042c521d923b0afc54bfb8b4fef260164ccf2e/Sleep/README.md)
+  * [Event](https://github.com/sunkiyu/Server-Programming/blob/865fdadd86661e9e183d2dd3c91d7b3d6b65f9d6/Event/README.md)
+  * [Condition Variable](https://github.com/sunkiyu/Server-Programming/blob/e03faf4da32ef2e15b9d35849c2b5c1c5484db15/Condition%20Variable/README.md)
+  * [Future](https://github.com/sunkiyu/Server-Programming/blob/bb8922b00295ba37977bdfd6eefc5149f21121d7/Future/README.md)
+  * [Cache](https://github.com/sunkiyu/Server-Programming/blob/25ee0f9553e0666642a3705734ce01137a60ccac/Cache/README.md)
   * [가시성/코드 재배치](#가시성과-코드-재배치)
   * [메모리 모델](#메모리-모델)
   * [Thread Local Stoage(TLS)](#Thread-Local-Stoage)
@@ -61,131 +61,6 @@
   다른 쓰레드도 동시에 작업을 하기 때문에 덮어쓰기 문제가 발생하여 원하는 값이 나오지 않을 수 있다.   
   interlockedincrement 함수를 사용하거나 atomic을 include 하여 atomic<int32>와 같이 사용하면 해당 문제를 해결할 수 있다.       
   ->속도 저하 문제가 생길 수 있으므로 꼭 필요한 경우에만 사용하자   
-			 
-## Sleep
-* SpinLock에서 반복문을 통해 락 상태를 확인하며 락을 계속 확인하는데 다른 쓰레드가 lock을 한시간이 길어지면 CPU 점유율이 높아질 수 있다.
-* 이 때 Sleep을 통해 잠시 TimeSlice를 반환하여 CPU 부하를 낮출 수 있다.
-* this_thread::sleep_for(쓰레드를 잠시 Block 상태로 한다. 일정 시간동안 스케줄러에 선택받지 못함),   
-	this_thread::yield(쓰레드를 Ready 상태로 스케줄러에 의해 선택받을 수 있게 한다)
-	
-## Event
-자동 Reset 이벤트
-수동 Reset 이벤트
-	
-```cpp
-void Producer()
-{
-	while (true)
-	{
-		{
-			unique_lock<mutex> lock(m);
-			q.push(100);
-		}
-		::SetEvent(handle);
-		this_thread::sleep_for(100000000ms);
-	}
-};
-
-void Consumer()
-{
-	while (true)
-	{
-		unique_lock<mutex> lock(m);
-		::WaitForSingleObject(handle, INFINITE);
-		//::ResetEvent(handle);
-		//Signal 되었다가 Non-Signal 상태로 변함
-		if (q.empty() == false)
-		{
-			int32 data = q.front();
-			q.pop();
-			cout << data << endl;
-		}
-	}
-};
-```
-* CreateEvent,CreateProcess 등을 수행하면 커널 오브젝트가 생성된다.    
-* UsageCount는 생성된 커널 오브젝트를 참조하는 횟수인데 CreateProcess일 경우 부모 프로세스, 자식 프로세스 총 2개의 UsageCount가 발생한다.   
-* CloseHandle을 호출하게 되면 UsageCount가 감소하게 되는데 UsageCount가 0이 되었을때 해당 커널 오브젝트가 소멸된다.   
-* Handle을 커널 오브젝트 정보를 참조하는 역할을 한다.
-## Condition Variable   
-* Event는 커널 영역에서 실행 Condition Variable은 유저 영역에서 실행된다.
-* condition_variable 클래스는 멀티쓰레드 환경에서 대기와 통지를 통해 공유 변수를 안전하게 수정할 수 있다.   
-* 보통 뮤텍스 함께 사용하여 Thread Safe하다.
-* condition_variable 클래스는 다른 스레드가 공유 변수(조건)를 수정하고, condition_variable을 알릴 때까지    
-  하나의 스레드 또는 동시에 여러 스레드를 차단하는 데 사용할 수 있는 동기화 기본 요소.
--공유 변수를 수정하려는 스레드는 다음을 수행해야 한다.
-	1. std::mutex를 획득해야 한다. (일반적으로 lock_guard를 통해 획득한다.)
-	2. 락이 걸린 상태에서 공유 변수를 수정한다.
-	3. std::condition_variable에 대해 notify_one 또는 notify_all을 통해 깨운다.(락을 푼다.).
-
-* 공유 변수가 atomic 한 경우에도 대기 스레드에 수정 사항을 올바르게 전달하려면 뮤텍스 락을 건 후 수정해야 함.
-- std::condition_variable에서 대기하는 모든 스레드는 다음을 수행.
-	1. 공유 변수를 보호하는 데 사용된 동일한 뮤텍스에서 std::unique_lock<std::mutex> 획득
-	2. wait, wait_for 또는 wait_until을 실행. 대기 작업은 atomic하게 뮤텍스를 해제하고 스레드 실행을 일시 중단.
-	3. 조건 변수가 알림을 받거나 시간 초과가 만료되거나 조건 충족이 실패하면 스레드가 깨어나고 뮤텍스가 원자적으로 다시 획득됩니다. 
-	  그런 다음 스레드는 조건을 확인하고 조건 충족이 실패한 경우 대기를 재개.
-## Future
-* 비동기적 실행
-> 동기 - 함수 호출 후 I/O 작업 및 로직 처리를 마친 시점과 함수의 리턴 시점이 같다.   
-비동기 - 함수 호출 후 바로 리턴한다(관심있는 이벤트를 운영체제에 맡기거나 등록해놓는다),   백그라운드에서 I/O작업 및 로직처리를 한 뒤 완료되면 프로그램에 알린다.
-* deferred ->lazy evaluation 지연해서 실행
-* async ->별도의 쓰레드를 만들어서 실행
-```cpp
-std::future<int64> future = std::async(std::launch::async, Process);
-	
-future.wait(); // future.wait_for(INFINITE);
-std::future_status status = future.wait_for(1ms);
-if (status == future_status::ready)
-{
-
-}
-int64 sum = future.get(); 
-```
-
-## Cache
-* RAM 보다 CPU에 가까우며 속도가 빠르다. 처리 속도(레지스트리>캐시>램>하드디스크)
-* RAM이나 하드디스크에서 CPU에서 매번 처리할 데이터를 꺼내오는 것은 지연시간이 오래 걸린다.
-* CPU가 RAM에서 데이터를 꺼내기 전 캐시를 확인한다.
-* Tmeporal Locality =>한번 사용된 데이터는 재사용될 확률이 높다.
-* Spatial Locality => 사용된 데이터의 주변 데이터는 사용될 확률이 높다.
-	
-* Spatial Locality의 예(Cache Friendly Code)
-```cpp
-INT32 buffer[10000][10000];
-int main(int argc, char *argv[])
-{
-
-    memset(buffer, 0, sizeof(buffer));
-	//열 단위로 접근
-	{
-		UINT64 start = GetTickCount();
-		INT64 sum = 0;
-		for(int i=0; i<10000; i++)
-			for (int j = 0; j < 10000; j++)
-			{
-				sum += buffer[i][j];
-			}
-		UINT64 end = GetTickCount();
-		cout << end - start << endl;
-	}
-
-	//행 단위로 접근
-	{
-		UINT64 start = GetTickCount();
-		INT64 sum = 0;
-		for (int i = 0; i<10000; i++)
-			for (int j = 0; j < 10000; j++)
-			{
-				sum += buffer[j][i];
-			}
-		UINT64 end = GetTickCount();
-		cout << end - start << endl;
-	}
-
-}
-```
-![image](https://user-images.githubusercontent.com/68372094/150241439-105f7d46-38d8-4fb2-9c4f-788bfc46fcc4.png)
-
 ## 가시성과 코드 재배치
 * CPU 처리 순서 
 > 1. Fetch 
