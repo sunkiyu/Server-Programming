@@ -4,7 +4,7 @@
  * [서버란](#서버란)
   * [멀티쓰레드](#멀티쓰레드)
   * [DeadLock](https://github.com/sunkiyu/Server-Programming/blob/ea5804437b3fc1b0bc5c0e74fe50ab0eae16b99e/DeadLock/README.md)
-  * [SpinLock](#SpinLock)
+  * [SpinLock](https://github.com/sunkiyu/Server-Programming/blob/514193b66bb37ae9b7a6032012482cda0f6a470c/SpinLock/README.md)
   * [CAS(Compare And Swap)](#CAS)
   * [Sleep](#Sleep)
   * [Event](#Event)
@@ -60,69 +60,8 @@
 > 전역변수 값 변경시 레지스트리와 메모리 사이에 읽기 쓰기 하는 과정 중    
   다른 쓰레드도 동시에 작업을 하기 때문에 덮어쓰기 문제가 발생하여 원하는 값이 나오지 않을 수 있다.   
   interlockedincrement 함수를 사용하거나 atomic을 include 하여 atomic<int32>와 같이 사용하면 해당 문제를 해결할 수 있다.       
-  ->속도 저하 문제가 생길 수 있으므로 꼭 필요한 경우에만 사용하자
-
-## SpinLock
-* 스핀락이라는 이름은 락을 획득할 때까지 해당 스레드가 빙빙 돌고 있다(spinning)는 것을 의미
-* 다른 쓰레드가 lock을 소유중이면 lock이 반환될 때까지 계속 확인하며 기다린다.
-* 다른 쓰레드가 lock하는 시간이 짧을 때 유용하다. 루프를 돌면서 CPU를 양보하지 않으므로 불필요한 컨텍스트 스위칭을 막을 수 있다.
-* 다른 쓰레드가 lock하는 시간이 길 경우 루프로 인해 CPU 점유율이 높아질 수 있다.(Busy Waiting)   
-```cpp
-class SpinLock
-{
-public:
-	void lock()
-	{
-		bool expected=false, desired = true;
-
-		while(_locked.compare_exchange_strong(expected, desired) == false)
-		{
-			expected = false;
-		}
-	}
-
-	void unlock()
-	{
-		_locked.store(false);
-	}
-private:
-	atomic<bool> _locked = false;
-};
-```   
->SpinLock을 개발자가 Custom으로 구현시 BasicLockable 요구사항을 충족 시켜야한다. 
->BasicLockable을 lock 과 unlock을 구현한 클래스 등을 말한다. cppreference에 자세한 내용이 나와있다.   
->[https://en.cppreference.com/w/cpp/named_req/BasicLockable](https://en.cppreference.com/w/cpp/named_req/BasicLockable)   
-* ##### volatile => 컴파일러 최적화 수행하지 마라
-```cpp
-int32 a=0;
-a=1;
-a=2;
-a=3;
-cout<<a<<endl;
-
-//어셈블리 코드 => 컴파일러 최적화가 적용된 모습
-00007FF6967710C0  mov         qword ptr [rsp+60h],rax  
-int32 a = 0;
-a = 1;
-a = 2;
-a = 3;
-cout << a << endl;
-00007FF6967710C5  mov         edx,3  
-
-//어셈블리 코드 => volatile 키워드 적용
-00007FF719E010C0  mov         qword ptr [rsp+60h],rax  
-volatile int32 a = 0;
-00007FF719E010C5  xor         ebx,ebx  
-00007FF719E010C7  mov         dword ptr [rsp+30h],ebx  
-	a = 1;
-00007FF719E010CB  mov         dword ptr [a],1  
-	a = 2;
-00007FF719E010D3  mov         dword ptr [a],2  
-	a = 3;
-00007FF719E010DB  mov         dword ptr [a],3  
-cout << a << endl;
-```   
-Release 모드 최적화 적용된다.
+  ->속도 저하 문제가 생길 수 있으므로 꼭 필요한 경우에만 사용하자   
+	
 ## CAS  
 -compare_exchange_strong
 -compare_exchange_weak
