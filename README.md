@@ -13,7 +13,7 @@
   * [Cache](https://github.com/sunkiyu/Server-Programming/blob/25ee0f9553e0666642a3705734ce01137a60ccac/Cache/README.md)
   * [가시성/코드 재배치](https://github.com/sunkiyu/Server-Programming/blob/1d09a1dc94c99a6e2145a2052d3aebb79dbe67c6/%EA%B0%80%EC%8B%9C%EC%84%B1-%EC%BD%94%EB%93%9C%20%EC%9E%AC%EB%B0%B0%EC%B9%98/README.md)
   * [메모리 모델](#메모리-모델)
-  * [Thread Local Stoage(TLS)](#Thread-Local-Stoage)
+  * [Thread Local Stoage(TLS)](https://github.com/sunkiyu/Server-Programming/blob/bdb74293bc6638e5ffad988c3ed7065658f5d692/TLS/README.md)
   * [Lock-Based Stack](#Lock-Based-Stack)
   * [Lock-Based Queue](#Lock-Based-Queue)
   * [Lock-Free-Stack#1](#Lock-Free-Stack1)
@@ -108,50 +108,6 @@ bool prev = flag.exchange(true);
 
 * Intel, AMD의 경우 순차적 일관성을 보장하므로 seq_cst를 써도 별다른 부하 없음   
 * ARM의 경우 차이가 있다.   
-## Thread Local Stoage
-### TLS
-* 쓰레드들이 하나의 로직에 몰리지 않게 해야한다.   
-* 쓰레드 마다 독립적으로 가지고 있는 공간(스레드별로 독립적으로 가지고 있는 스택영역과 같다)   
-* Heap이나 데이터영역(static 변수,전역변수)가 있는 공간에서 큰 덩어리를 떼어다가 TLS 영역에서 계산한다.   
-* 매번 읽고/쓰기가 발생할 때마다 heap/데이터 영역에 위해 쓰레드가 몰리면 데이터 경합이 커지기 때문
-```cpp
-//windows 용 TLS
-_declspec(thread) int32 value;
-//c++ 11
-//쓰레드마다 자기만의 공간을 갖는다.
-//thread_local 이 없을 경우 LThreadId가 덮어써진다.
-thread_local int32 LThreadId = 0;
-
-void ThreadMain(int32 threadId)
-{
-	LThreadId = threadId;
-
-	while (true)
-	{
-		cout << "Hi i am Thread" << LThreadId << endl;
-		this_thread::sleep_for(1s);
-	}
-}
-
-int main()
-{
-	vector<thread> threads;
-	for (int32 i = 0; i < 10; i++)
-	{
-		int32 threadId = i + 1;
-		threads.push_back(thread(ThreadMain,threadId));
-	}
-
-	for (thread &t : threads)
-	{
-		t.join();
-	}
-}
-```
-* thread local storage 사용 안했을 경우   
-![image](https://user-images.githubusercontent.com/68372094/150449289-d3568e94-52dc-40e9-84dd-b87e0fc66b38.png)
-* thread local storage 사용 했을 경우   
-![image](https://user-images.githubusercontent.com/68372094/150449405-146901a8-654d-4842-b64d-a88a47a59d42.png)
 
 ## Lock-Based Stack   
 ### * Lock을 걸지 않은 Stack과 Queue는 멀티스레드 환경에서 비어있는 값을 참조하는 Crash가 발생할 가능성이 있다.
