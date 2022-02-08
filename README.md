@@ -21,7 +21,7 @@
   * [ThreadManager](#ThreadManager)
   * [Reader-Writer-Lock](#Reader-Writer-Lock)
   * [Dead-Lock 탐지](#Dead-Lock-Detection)
-  * [멀티스레드 소수구하기 문제](#멀티스레드-소수-구하기)
+  * [멀티스레드 소수구하기 문제](https://github.com/sunkiyu/Server-Programming/blob/273667fa034ad9ce06a50c8f0608ff9f5abf1922/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%EC%86%8C%EC%88%98%20%EA%B5%AC%ED%95%98%EA%B8%B0/README.md)
   * [레퍼런스 카운팅](#레퍼런스-카운팅)
   * [Allocator](#Allocator)
   * [Stomp Allocator](#Stomp-Allocator)
@@ -396,8 +396,7 @@ void Lock::ReadUnlock()
 	if ((_lockFlag.fetch_sub(1) & READ_COUNT_MASK) == 0)
 		CRASH("MULTIPL
     
-```
-
+```   
 
 ## Dead-Lock Detection   
 * 데드락 상황은 nullptr 체크 누락이 거의 0 순위로 제일 많은 원인이 된다.   
@@ -405,104 +404,7 @@ void Lock::ReadUnlock()
 - 순방향 간선   
 - 교차 간선   
 - 역방향 간선   
-## 멀티스레드 소수 구하기   
-```cpp
-#include <atomic>
-#include <windows.h>
-#include <iostream>
-#include <thread>
-using namespace std;
-atomic_int ssAtomic;
 
-void ssCount(int start,int end)
-{
-    for(int num =start; num<=end; num++)
-    {
-        if(num==1){
-            continue;
-        }
-        bool isss= true;
-        for(int i=2; i<num; i++)
-        {
-            if(!(num%i)){
-                isss = false;
-                break;
-            };
-        }
-        if(!isss)continue;
-        ssAtomic++;
-    }
-}
-
-int main(int argc, char *argv[])
-{
-   int start = GetTickCount();
-   thread t1(ssCount,1,300000);
-   t1.join();
-   int end = GetTickCount();
-   
-   cout<<"Total= "<<ssAtomic<<" "<<end-start<<"ms"<<endl;
-   return 0;
-}
-```   
-![image](https://user-images.githubusercontent.com/68372094/152285760-ffc3039e-8525-4565-bc6b-a03eaf32f0fb.png)   
-싱글스레드 환경에서는 300,000까지 소수의 개수를 구하는데 15875ms(약15초)의 시간이 소요된다.      
-```cpp
-#include <windows.h>
-#include <iostream>
-#include <thread>
-#include <vector>
-using namespace std;
-atomic_int ssAtomic;
-
-void ssCount(int start,int end)
-{
-    for(int num =start; num<=end; num++)
-    {
-        if(num==1){
-            continue;
-        }
-        bool isss= true;
-        for(int i=2; i<num; i++)
-        {
-            if(!(num%i)){
-                isss = false;
-                break;
-            };
-        }
-        if(!isss)continue;
-        ssAtomic++;
-    }
-}
-
-int main(int argc, char *argv[])
-{
-   int start = GetTickCount();
-   vector<thread> threads;
-   int coreCnt = thread::hardware_concurrency();
-   
-	threads.push_back(thread(ssCount,1,70000));
-	threads.push_back(thread(ssCount,70001,140000));
-	threads.push_back(thread(ssCount,140001,210000));
-	threads.push_back(thread(ssCount,210001,300000));
-	 
-   for(int i=0; i<4; i++)
-   {
-   	threads[i].join();
-   }
-   int end = GetTickCount();
-   
-   cout<<"Total= "<<ssAtomic<<" "<<end-start<<"ms"<<endl;
-   return 0;
-}
-```
-![image](https://user-images.githubusercontent.com/68372094/152287019-2b2ddfc7-e8c8-4377-9fde-fee25cf7d056.png)   
-hardware_concurrency를 통해 PC코어 개수를 확인해보니 4개였다. 따라서 스레드를 4개 이상 생성하는 것은 이 프로젝트에서 큰 의미가 없어보이므로 스레드 4개를 생성후 실험하였다.   
-9087ms(약 9초)로 6초 가량 시간이 단축되는 것을 확인 할 수 있었다.   
-![image](https://user-images.githubusercontent.com/68372094/152288482-1b3e1993-226c-4efb-8627-e4817dca3f05.png)   
-4코어를 모두 높은 사용률을 나타낸다. 4개 코어가 4개의 스레드를 담당하기 때문   
-![image](https://user-images.githubusercontent.com/68372094/152288999-4d71e802-b26b-48e7-9cab-53513d76a97a.png)   
-싱글스레드일 경우 컨텍스트 스위칭을 통해 CPU부하를 나누기 때문에 부하가 덜하다. 4개의 코어가 1개의 스레드를 담당   
 ## 레퍼런스-카운팅   
 * unique_ptr은 C스타일 포인터와 거의 같다. 차이점은 복사하는 부분(복사 생성자)이 막혀있다. std::move를 통해서(이동 대입 연산자) 대입 연산 가능   
 * weak_ptr은 shared_ptr의 순환 참조 문제 해결.   
