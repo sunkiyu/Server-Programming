@@ -11,7 +11,7 @@
   * [Condition Variable](https://github.com/sunkiyu/Server-Programming/blob/e03faf4da32ef2e15b9d35849c2b5c1c5484db15/Condition%20Variable/README.md)
   * [Future](https://github.com/sunkiyu/Server-Programming/blob/bb8922b00295ba37977bdfd6eefc5149f21121d7/Future/README.md)
   * [Cache](https://github.com/sunkiyu/Server-Programming/blob/25ee0f9553e0666642a3705734ce01137a60ccac/Cache/README.md)
-  * [가시성/코드 재배치](#가시성과-코드-재배치)
+  * [가시성/코드 재배치](https://github.com/sunkiyu/Server-Programming/blob/1d09a1dc94c99a6e2145a2052d3aebb79dbe67c6/%EA%B0%80%EC%8B%9C%EC%84%B1-%EC%BD%94%EB%93%9C%20%EC%9E%AC%EB%B0%B0%EC%B9%98/README.md)
   * [메모리 모델](#메모리-모델)
   * [Thread Local Stoage(TLS)](#Thread-Local-Stoage)
   * [Lock-Based Stack](#Lock-Based-Stack)
@@ -61,63 +61,6 @@
   다른 쓰레드도 동시에 작업을 하기 때문에 덮어쓰기 문제가 발생하여 원하는 값이 나오지 않을 수 있다.   
   interlockedincrement 함수를 사용하거나 atomic을 include 하여 atomic<int32>와 같이 사용하면 해당 문제를 해결할 수 있다.       
   ->속도 저하 문제가 생길 수 있으므로 꼭 필요한 경우에만 사용하자   
-## 가시성과 코드 재배치
-* CPU 처리 순서 
-> 1. Fetch 
-> 2. Decode 
-> 3. Excecute 
-> 4. Write-Back
-
-* 컴파일러와 CPU가 최적화를 위해 가시성과 코드 재배치를 수행하여 의도하는 값과 다른 값이 나올 수 있다.
-* 가시성 - 멀티 코어 환경에서는 캐시와 레지스트리가 여러개 존재하여 멀티쓰레드가 공유 변수에 접근할 때 서로 다른 캐시와 레지스터에 읽고/쓰기 할 수 있는데
-	  이 때 시간차이와 DataRace등 경합 상태가 발생하여 쓰레드 별로 서로 다른 값을 바라 볼 수 있다.
-* 코드 재배치 - 컴파일러와 CPU가 효율적인 작업이라고 판단하여 최적화 시켜 코드 재배치가 일어날 수 있는데 이로 인해 의도하는 값과 다른 값이 나올 수 있다.
-* 코드 재배치의 예
-```cpp
-int32 x = 0,y = 0,r1 = 0,r2 = 0;
-
-volatile bool ready;
-
-void Thread_1()
-{
-	while (!ready);
-	y = 1; //store y
-	r1 = x; //x load
-}
-	
-void Thread_2()
-{
-	while (!ready);
-	x = 1; //store y
-	r2 = y; //x load
-}
-
-int main()
-{
-	int32 count = 0;
-
-	while (true)
-	{
-		ready = false;
-		count++;
-		x = y = r1 = r2 = 0;
-
-		thread t1(Thread_1);
-		thread t2(Thread_2);
-		
-		ready = true;
-
-		t1.join();
-		t2.join();
-
-		if (r1 == 0 && r2 == 0)
-			break;
-	}
-	//r1 == 0 && r2 == 0인 상황이 나올 수 없는 구조지만 코드 재배치를 통해 
-	//r1 == 0 && r2 == 0인 상황이 발생함
-	cout << count << "-r1==0 && r2==0" << endl;
-}
-```
 ## 메모리 모델
 * 여러 쓰레드가 동일 메모리에 동시 접근 그 중 write가 문제가 된다
 * atomic is_lock_free 원자적으로 처리되었는가?
