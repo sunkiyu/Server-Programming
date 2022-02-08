@@ -3,7 +3,7 @@
 # 목차
  * [서버란](#서버란)
   * [멀티쓰레드](#멀티쓰레드)
-  * [DeadLock](#https://github.com/sunkiyu/Server-Programming/blob/ea5804437b3fc1b0bc5c0e74fe50ab0eae16b99e/DeadLock/README.md)
+  * [DeadLock](https://github.com/sunkiyu/Server-Programming/blob/ea5804437b3fc1b0bc5c0e74fe50ab0eae16b99e/DeadLock/README.md)
   * [SpinLock](#SpinLock)
   * [CAS(Compare And Swap)](#CAS)
   * [Sleep](#Sleep)
