@@ -1,5 +1,4 @@
-
-<img width="743" alt="스크린샷 2022-02-09 오후 11 38 14" src="https://user-images.githubusercontent.com/68372094/153223821-474eba33-4a17-4a21-b1a7-308111ef8d69.png">.  
+<img width="743" alt="스크린샷 2022-02-09 오후 11 38 14" src="https://user-images.githubusercontent.com/68372094/153226547-2e0a7c70-e24f-46b2-acaa-6853d56915e8.png">
 
 메모리 풀을 사이즈 별로 생성 후 메모리 풀 테이블에서 관리한다.
 사이즈 별 생성은 사용자 임의로 선택하면 되는데 32바이트 64바이트 96바이트 ... 등을 메모리 풀 사이즈를 선택한다.   
