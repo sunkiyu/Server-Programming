@@ -12,7 +12,8 @@ new의 역할은 2가지이며 이를 동시에 수행한다.
 
 Placement New를 통해 1번과 2번을 각각 분리된 작업으로 수행할 수 있다.
 예)
-'''cpp
+
+```cpp
 template<Typename T>
 class PlacementNew
 {
@@ -21,8 +22,8 @@ class PlacementNew
 	
 	static void* AttachHeader(T* header, int32 size)
 	{
-		new(header)T(size); // placement new
+		new(header)T(size); // placement new 이미 할당 받아놓은 header가 가르키는 메모리에 T 객체 생성자를 실행하여 초기화를 수행한다.
 		return reinterpret_cast<void*>(++header);
 	}
 }
-'''
+```
