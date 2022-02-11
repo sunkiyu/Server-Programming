@@ -62,5 +62,4 @@
   다른 쓰레드도 동시에 작업을 하기 때문에 덮어쓰기 문제가 발생하여 원하는 값이 나오지 않을 수 있다.   
   interlockedincrement 함수를 사용하거나 atomic을 include 하여 atomic<int32>와 같이 사용하면 해당 문제를 해결할 수 있다.       
   ->속도 저하 문제가 생길 수 있으므로 꼭 필요한 경우에만 사용하자   
-## Allocator   
-## Stomp-Allocator
+
