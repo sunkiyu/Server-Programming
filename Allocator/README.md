@@ -33,6 +33,6 @@ void operator delete[](void* ptr)
 ![image](https://user-images.githubusercontent.com/68372094/154200945-422e0a90-a271-40d3-8566-18d98f51703a.png)   
 
 * Placement new란?   
-- Cpp의 new에서는 메모리 할당과 초기화 2가지 작업을 동시에 수행한다.   
-- Placement new를 사용하면 메모리 할당과 초기화 작업을 각각 수행할 수 있는데, 미리 malloc 등으로 할당해 놓은 메모리 주소에 생성자를 실행하여 해당 메모리에 초기화 할 수 있다.   
+-Cpp의 new에서는 메모리 할당과 초기화 2가지 작업을 동시에 수행한다.   
+-Placement new를 사용하면 메모리 할당과 초기화 작업을 각각 수행할 수 있는데, 미리 malloc 등으로 할당해 놓은 메모리 주소에 생성자를 실행하여 해당 메모리에 초기화 할 수 있다.   
 
