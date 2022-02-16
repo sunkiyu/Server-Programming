@@ -84,13 +84,3 @@ int main(int argc, char *argv[])
 ```    
 ![image](https://user-images.githubusercontent.com/68372094/151299019-cd5a4ffd-0398-4ff4-8e65-b43c8599d44a.png)   
 위와 같이 CAS (Compare And Swap)을 적용하면 1~3의 과정을 원자적으로 처리하여 우리가 의도한 값 200000000을 얻을 수 있다.   
-원자적 처리 과정은 아래와 같다.   
-1. 스레드1이 먼저 Add 함수의 루프에서 compare_exchange_strong 함수를 호출한다.
-2. 스레드1이 최초로 compare_exchange_strong을 호출하였기 때문에 _locked와 expected는 모두 false를 나타낸다.   
-3. 따라서 _locked는 desired 값으로 변경된 후(_locked == desired == true) true를 리턴하여 while문을 빠져 나온뒤 sum을 증가시키는 연산을 한다.
-4. 이때 스레드2도 실행 중이므로 sum 공유 변수를 건드리려 하는데 스레드 2가 compare_exchange_strong를 호출한 시점은   
-   3번 과정에서 _locked== true, expected==false 이므로 expected = _locked 값으로 수정한 뒤 false를 리턴하고 _locked(true)로 수정된 expected를 false로 수정한다.   
-5. false를 리턴하였으므로 다시 while 문에서 compare_exchange_strong을 호출하는데 4번과 마찬가지 상태이므로 while 루프에 머물면서 sum 공유 변수를 건드리지 못한다.
-6. sum 증가 연산을 한뒤 비로소 _locked.store ==false를 호출하는데 이때 while문에 머물던 스레드2 가 _locked== false, expected == false 상태로 true를 리턴하고 sum   
-   공유변수의 값을 증가시킬 기회를 얻는다.
-7. 위와 같은 과정이 두 스레드 모두 루프를 돌 때까지 반복된다.  
