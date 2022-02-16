@@ -3,7 +3,7 @@
 # 목차
  * [서버란](#서버란)
   * [멀티스레드](https://github.com/sunkiyu/Server-Programming/blob/560314354b3ed3e3724ecb1b0e97159afe3c0153/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C/README.md)
-  * [DeadLock](https://github.com/sunkiyu/Server-Programming/blob/ea5804437b3fc1b0bc5c0e74fe50ab0eae16b99e/DeadLock/README.md)
+  * [DeadLock](https://github.com/sunkiyu/Server-Programming/blob/d6cbc3107258c8e51043898bc4650f4cd4fed0e0/DeadLock/README.md)
   * [SpinLock](https://github.com/sunkiyu/Server-Programming/blob/514193b66bb37ae9b7a6032012482cda0f6a470c/SpinLock/README.md)
   * [CAS(Compare And Swap)](https://github.com/sunkiyu/Server-Programming/blob/083f88889266a8e1e7d28d7cb19140e4b39d4522/CAS/README.md)
   * [Sleep](https://github.com/sunkiyu/Server-Programming/blob/35042c521d923b0afc54bfb8b4fef260164ccf2e/Sleep/README.md)
