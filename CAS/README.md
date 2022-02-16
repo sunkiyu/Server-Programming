@@ -41,6 +41,7 @@ sum이 1 증가할 때 생각보다 많은 작업이 일어나는데
 1부터 3까지의 과정이 원자적으로 *한번에 하나의 스레드에 의해 처리되어야* 하지만 멀티스레드 환경에서는 1~3 과정 중 다른 스레드가 침범하여 공유 변수값을 오염시킬 우려가 있다.   
 흔히 함수 호출 단위로 CPU가 명령어를 처리하는 것으로 생각하지만 단순한 cout 호출시에도 Context Switching 과정이 일어나기 때문에 의도와 다른 값이 나올 수 있다.
 따라서 1부터 3까지의 과정을 원자적으로 처리해야 한다.   
+## Thread 1이 먼저 공유 변수를 수정 중일 경우 Thread2가 lock() 함수에 진입한 상태를 나타낸 그림  
 ![image](https://user-images.githubusercontent.com/68372094/154224264-cba7e19e-3d58-4226-9b98-af0f40f08a80.png)   
 ```cpp   
 #include<iostream>
@@ -80,8 +81,7 @@ int main(int argc, char *argv[])
     std::cout << sum << std::endl;
     return 0;
 }
-```   
-* Thread 1이 먼저 공유 변수를 수정 중일 경우 Thread2가 lock() 함수에 진입한 상태를 나타낸 그림   
+```    
 ![image](https://user-images.githubusercontent.com/68372094/151299019-cd5a4ffd-0398-4ff4-8e65-b43c8599d44a.png)   
 위와 같이 CAS (Compare And Swap)을 적용하면 1~3의 과정을 원자적으로 처리하여 우리가 의도한 값 200000000을 얻을 수 있다.   
 원자적 처리 과정은 아래와 같다.   
