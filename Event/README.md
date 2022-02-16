@@ -1,4 +1,6 @@
-## Event
+## Event   
+![image](https://user-images.githubusercontent.com/68372094/154230366-10277e0b-d1c7-435a-b6b4-89f0d936db63.png)
+   
 자동 Reset 이벤트
 수동 Reset 이벤트
 	
