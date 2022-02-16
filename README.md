@@ -27,6 +27,7 @@
   * [Stomp Allocator](https://github.com/sunkiyu/Server-Programming/blob/c2558c16d9c5db573dde237ba207069131d105a3/Stomp-Allocator/README.md)
   * [Memory Poo1#1](https://github.com/sunkiyu/Server-Programming/blob/56ca3cdae840ef097fa485dbea188e92f5e61a7e/Memory%20Pool%231/README.md)
 * * *
+[참조 강의](https://www.inflearn.com/course/%EC%96%B8%EB%A6%AC%EC%96%BC-3d-mmorpg-4/)
 ## 서버란
 -다른 컴퓨터에서 연결 가능하도록 상시 실행대기하며 서비스를 제공하는 프로그램
 
