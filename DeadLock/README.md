@@ -1,7 +1,9 @@
 ## DeadLock
 * Lock 순서를 지켜준다.   
 	=>A쓰레드에서 mutexA -> mutexB 순서로 Lock을 했을 경우 B쓰레드도 mutexA->mutexB 순서로 Lock을 한다.
-* 개발단계에서는 일어나지 않다가 배포 후 다수의 사용자가 사용할 경우 간혹가다가 일어나는 경우가 대다수다. 
+* 개발단계에서는 일어나지 않다가 배포 후 다수의 사용자가 사용할 경우 간혹가다가 일어나는 경우가 대다수다.   
+![image](https://user-images.githubusercontent.com/68372094/154211715-d8c52185-5d59-4b0d-ad15-2282e2b55f79.png)   
+>> 1번 함수와 3번 함수를 일반적인 mutex로 계속 실행하다보면 언젠간 DeadLock 상태에 빠지게 된다.
 ```cpp
 mutex m1;
 mutex m2;
