@@ -3,6 +3,8 @@
 * 다른 쓰레드가 lock을 소유중이면 lock이 반환될 때까지 계속 확인하며 기다린다.
 * 다른 쓰레드가 lock하는 시간이 짧을 때 유용하다. 루프를 돌면서 CPU를 양보하지 않으므로 불필요한 컨텍스트 스위칭을 막을 수 있다.
 * 다른 쓰레드가 lock하는 시간이 길 경우 루프로 인해 CPU 점유율이 높아질 수 있다.(Busy Waiting)   
+* ## Thread 1이 먼저 공유 변수를 수정 중일 경우 Thread2가 lock() 함수에 진입한 상태를 나타낸 그림  
+![image](https://user-images.githubusercontent.com/68372094/154225446-45e76c83-10d7-4ddc-b2a3-541869be6f79.png)   
 ```cpp
 class SpinLock
 {
