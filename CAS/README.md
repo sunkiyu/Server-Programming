@@ -42,7 +42,7 @@ sum이 1 증가할 때 생각보다 많은 작업이 일어나는데
 흔히 함수 호출 단위로 CPU가 명령어를 처리하는 것으로 생각하지만 단순한 cout 호출시에도 Context Switching 과정이 일어나기 때문에 의도와 다른 값이 나올 수 있다.
 따라서 1부터 3까지의 과정을 원자적으로 처리해야 한다.   
 ## Thread 1이 먼저 공유 변수를 수정 중일 경우 Thread2가 lock() 함수에 진입한 상태를 나타낸 그림  
-![image](https://user-images.githubusercontent.com/68372094/154224264-cba7e19e-3d58-4226-9b98-af0f40f08a80.png)   
+![image](https://user-images.githubusercontent.com/68372094/154225446-45e76c83-10d7-4ddc-b2a3-541869be6f79.png)   
 ```cpp   
 #include<iostream>
 #include<queue>
