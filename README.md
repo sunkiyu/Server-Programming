@@ -27,6 +27,6 @@
   * [Stomp Allocator](https://github.com/sunkiyu/Server-Programming/blob/c2558c16d9c5db573dde237ba207069131d105a3/Stomp-Allocator/README.md)
   * [Memory Poo1#1](https://github.com/sunkiyu/Server-Programming/blob/56ca3cdae840ef097fa485dbea188e92f5e61a7e/Memory%20Pool%231/README.md)
 * * *
-* 참조 강의
+## 참조 강의   
 [[C++과 언리얼로 만드는 MMORPG 게임 개발 시리즈] Part4: 게임 서버](https://www.inflearn.com/course/%EC%96%B8%EB%A6%AC%EC%96%BC-3d-mmorpg-4/)
 
