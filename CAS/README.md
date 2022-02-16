@@ -81,6 +81,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 ```   
+* Thread 1이 먼저 공유 변수를 수정 중일 경우 Thread2가 lock() 함수에 진입한 상태를 나타낸 그림   
 ![image](https://user-images.githubusercontent.com/68372094/151299019-cd5a4ffd-0398-4ff4-8e65-b43c8599d44a.png)   
 위와 같이 CAS (Compare And Swap)을 적용하면 1~3의 과정을 원자적으로 처리하여 우리가 의도한 값 200000000을 얻을 수 있다.   
 원자적 처리 과정은 아래와 같다.   
