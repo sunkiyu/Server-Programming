@@ -30,4 +30,5 @@ void operator delete[](void* ptr)
 }
 ```   
 * 타입에 상관없이 타입 크기에 맞는 메모리를 할당해주는 템플릿과 클래스를 생성하여 사용할 수 있다.   
-![image](https://user-images.githubusercontent.com/68372094/154200830-e93f8acc-b56a-4f3a-bd94-0a690ca2cf41.png)
+![image](https://user-images.githubusercontent.com/68372094/154200945-422e0a90-a271-40d3-8566-18d98f51703a.png)
+
