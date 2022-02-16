@@ -23,7 +23,7 @@
   * [Dead-Lock 탐지](https://github.com/sunkiyu/Server-Programming/blob/9648d53a8f23a825ffde403be6ee80bd6196f06c/DeadLock%20Detection/README.md)
   * [멀티스레드 소수구하기 문제](https://github.com/sunkiyu/Server-Programming/blob/273667fa034ad9ce06a50c8f0608ff9f5abf1922/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%EC%86%8C%EC%88%98%20%EA%B5%AC%ED%95%98%EA%B8%B0/README.md)
   * [레퍼런스 카운팅](https://github.com/sunkiyu/Server-Programming/blob/09b55dc4d0b8d82f16310322fa867d9d2859baf7/ReferenceCounting/README.md)
-  * [Allocator](https://github.com/sunkiyu/Server-Programming/blob/690db615ae24be5a2564032546a218659f16bc9f/Allocator/README.md)
+  * [Allocator](https://github.com/sunkiyu/Server-Programming/blob/16dff2a85aa74d43cfc077488d2772c43038050b/Allocator/README.md)
   * [Stomp Allocator](https://github.com/sunkiyu/Server-Programming/blob/c2558c16d9c5db573dde237ba207069131d105a3/Stomp-Allocator/README.md)
   * [Memory Poo1#1](https://github.com/sunkiyu/Server-Programming/blob/56ca3cdae840ef097fa485dbea188e92f5e61a7e/Memory%20Pool%231/README.md)
 * * *
