@@ -1,9 +1,11 @@
-## Cache
+## Cache   
 * RAM 보다 CPU에 가까우며 속도가 빠르다. 처리 속도(레지스트리>캐시>램>하드디스크)
 * RAM이나 하드디스크에서 CPU에서 매번 처리할 데이터를 꺼내오는 것은 지연시간이 오래 걸린다.
 * CPU가 RAM에서 데이터를 꺼내기 전 캐시를 확인한다.
 * Tmeporal Locality =>한번 사용된 데이터는 재사용될 확률이 높다.
 * Spatial Locality => 사용된 데이터의 주변 데이터는 사용될 확률이 높다.
+![image](https://user-images.githubusercontent.com/68372094/154419639-91c71af3-3df1-447a-9795-b0b7ce54c0bb.png)   
+* 행 단위 접근보다 열 단위 접근이 Spatial Locality를 만족할 가능성이 높다   
 	
 * Spatial Locality의 예(Cache Friendly Code)
 ```cpp
