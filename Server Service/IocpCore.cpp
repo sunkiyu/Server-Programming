@@ -1,41 +1,56 @@
 #include "pch.h"
-#include <iostream>
-#include "CorePch.h"
-#include <atomic>
-#include <mutex>
-#include <windows.h>
-#include <future>
-#include "ThreadManager.h"
+#include "IocpCore.h"
+#include "IocpEvent.h"
 
-#include "Service.h"
-#include "Session.h"
+/*--------------
+	IocpCore
+---------------*/
 
-class GameSession : public Session
+IocpCore::IocpCore()
 {
+	_iocpHandle = ::CreateIoCompletionPort(INVALID_HANDLE_VALUE, 0, 0, 0);
+	ASSERT_CRASH(_iocpHandle != INVALID_HANDLE_VALUE);
+}
 
-};
-
-
-int main()
+IocpCore::~IocpCore()
 {
-	ServerServiceRef service = MakeShared<ServerService>(
-		NetAddress(L"127.0.0.1", 7777),
-		MakeShared<IocpCore>(),
-		MakeShared<GameSession>, // TODO : SessionManager 등
-		100);
+	::CloseHandle(_iocpHandle);
+}
 
-	ASSERT_CRASH(service->Start());
+bool IocpCore::Register(IocpObjectRef iocpObject)
+{
+	//키 값을 사용하지 않을 것이다. 0으로 민다.
+	return ::CreateIoCompletionPort(iocpObject->GetHandle(), _iocpHandle, /*key*/0, 0);
+}
 
-	for (int32 i = 0; i < 5; i++)
+bool IocpCore::Dispatch(uint32 timeoutMs)
+{
+	DWORD numOfBytes = 0;
+	ULONG_PTR key = 0;	
+	IocpEvent* iocpEvent = nullptr;
+
+	//복원하는 곳														 키값, 위에서 0으로 밀었다.
+	if (::GetQueuedCompletionStatus(_iocpHandle, OUT &numOfBytes, OUT &key, OUT reinterpret_cast<LPOVERLAPPED*>(&iocpEvent), timeoutMs))
 	{
-		GThreadManager->Launch([=]()
-			{
-				while (true)
-				{
-					service->GetIocpCore()->Dispatch();
-				}				
-			});
-	}	
+		IocpObjectRef iocpObject = iocpEvent->owner;
+		//이 시점에 iocpObject가 살아있을까?
+		//Recv나 Send를 예약한 상태에서 iocpObject를 삭제하면 Crash가 난다.오염된 포인터.
+		iocpObject->Dispatch(iocpEvent, numOfBytes);
+	}
+	else
+	{
+		int32 errCode = ::WSAGetLastError();
+		switch (errCode)
+		{
+		case WAIT_TIMEOUT:
+			return false;
+		default:
+			// TODO : 로그 찍기
+			IocpObjectRef iocpObject = iocpEvent->owner;
+			iocpObject->Dispatch(iocpEvent, numOfBytes);
+			break;
+		}
+	}
 
-	GThreadManager->Join();
+	return true;
 }
