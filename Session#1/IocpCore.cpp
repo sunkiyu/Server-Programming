@@ -29,7 +29,8 @@ bool IocpCore::Dispatch(uint32 timeoutMs)
 	//CreateIoCompletionPort에서 0으로 넣었기 떄문에 딱히 사용 안함.
 	ULONG_PTR key = 0;	
 	IocpEvent* iocpEvent = nullptr;
-
+	
+	//키값(iocpobject)를 event(overlapped) 쪽에 넣어준다.
 	if (::GetQueuedCompletionStatus(_iocpHandle, OUT &numOfBytes, OUT &key, OUT reinterpret_cast<LPOVERLAPPED*>(&iocpEvent), timeoutMs))
 	{
 		//너를 물고있는 owner가 누구냐?
