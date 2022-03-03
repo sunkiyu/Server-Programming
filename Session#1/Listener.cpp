@@ -50,6 +50,7 @@ bool Listener::StartAccept(ServerServiceRef service)
 	for (int32 i = 0; i < acceptCount; i++)
 	{
 		AcceptEvent* acceptEvent = xnew<AcceptEvent>();
+		//외부에서는 shared_ptr을 사용하면 되는데 객체 내부에서는 자기 자신의 shared_ptr을 뱉어줄 방법은 아래와 같다.
 		acceptEvent->owner = shared_from_this();
 		_acceptEvents.push_back(acceptEvent);
 		RegisterAccept(acceptEvent);
