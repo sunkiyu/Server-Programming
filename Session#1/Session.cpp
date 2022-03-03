@@ -74,6 +74,7 @@ void Session::RegisterRecv()
 	//WSARecv 해놓는 동안 session이 삭제되지 않기 위해
 	//::GetQueuedCompletionStatus에서 _recvEvent를 복원할 때 객체가 삭제된 상태면 오염된 포인터가 접근되기 때문에
 	//iocp object가 삭제되지 않게 하기 위함이다.
+	////키값(iocpobject(listener or session )를 event(overlapped) 쪽에 넣어준다.
 	_recvEvent.owner = shared_from_this(); // ADD_REF 레퍼런스 카운트 1늘린다.
 
 	WSABUF wsaBuf;
