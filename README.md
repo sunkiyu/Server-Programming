@@ -30,8 +30,8 @@
   * [IOCP Core](https://github.com/sunkiyu/Server-Programming/tree/main/IOCP%20Core)
   * [Server Service](https://github.com/sunkiyu/Server-Programming/blob/main/Server%20Service/README.md)
   * [Session #1](https://github.com/sunkiyu/Server-Programming/blob/main/Session%231/README.md)
-  * [Session #2](https://github.com/sunkiyu/Server-Programming/blob/main/Session%231/README.md)
-  * [Session #3](https://github.com/sunkiyu/Server-Programming/blob/main/Session%231/README.md)
+  * [Session #2](https://github.com/sunkiyu/Server-Programming/blob/main/Session%232/README.md)
+  * [Session #3](https://github.com/sunkiyu/Server-Programming/blob/main/Session%233/README.md)
   * [RecvBuffer](https://github.com/sunkiyu/Server-Programming/blob/main/RecvBuffer/README.md)
 * * *
 ## 참조 강의   
