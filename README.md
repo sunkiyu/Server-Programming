@@ -1,7 +1,7 @@
 # Server Programming
 * * *
 # 목차
-*** ## 멀티스레드 프로그래밍
+* * * ## 멀티스레드 프로그래밍
  * [서버란](https://github.com/sunkiyu/Server-Programming/blob/31140d09042a4828490caa2444b0ac02acf72581/%EC%84%9C%EB%B2%84%EB%9E%80%20%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80%3F/README.md)
   * [멀티스레드](https://github.com/sunkiyu/Server-Programming/blob/560314354b3ed3e3724ecb1b0e97159afe3c0153/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C/README.md)
   * [DeadLock](https://github.com/sunkiyu/Server-Programming/blob/main/DeadLock/README.md)
