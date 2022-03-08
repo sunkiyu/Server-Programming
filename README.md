@@ -5,7 +5,7 @@
 * * *
  * [서버란](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%84%9C%EB%B2%84%EB%9E%80%20%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80%3F)
   * [멀티스레드](https://github.com/sunkiyu/Server-Programming/blob/main/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C/README.md)
-  * [DeadLock](https://github.com/sunkiyu/Server-Programming/blob/main/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/DeadLock/README.md)
+  * [DeadLock](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/DeadLock)
   * [SpinLock](https://github.com/sunkiyu/Server-Programming/blob/main/SpinLock/README.md)
   * [CAS(Compare And Swap)](https://github.com/sunkiyu/Server-Programming/tree/main/CAS/README.md)
   * [Sleep](https://github.com/sunkiyu/Server-Programming/blob/main/Sleep/README.md)
