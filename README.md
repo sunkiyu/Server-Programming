@@ -22,7 +22,7 @@
   * [Lock-Free-Stack#2](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Lock-Free-Stack%232)
   * [ThreadManager](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/ThreadManager)
   * [Reader-Writer-Lock](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Reader-Writer-Lock)
-  * [Dead-Lock 탐지](https://github.com/sunkiyu/Server-Programming/blob/main/DeadLock%20Detection/README.md)
+  * [Dead-Lock 탐지](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/DeadLock%20Detection)
   * [멀티스레드 소수구하기 문제](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%EC%86%8C%EC%88%98%20%EA%B5%AC%ED%95%98%EA%B8%B0)
    ### 메모리 관리
 * * *
