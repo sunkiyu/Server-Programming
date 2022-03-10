@@ -8,9 +8,9 @@
 class SocketUtils
 {
 public:
-	//╨Я╣©╠Б ╧ЖюЭ гт╪Ж╣И.
+	//К╧└К▐≥Й╦╟ К╡└Л═└ М∙╗Л┬≤К⌠╓.
 	static LPFN_CONNECTEX		ConnectEx;
-	//╪рдо юГ╩Г©Кюл ╟║╢иго╢ы.
+	//Л├▄Л╪⌠ Л·╛Л┌╛Л ╘Л²╢ Й╟─К┼╔М∙≤К▀╓.
 	static LPFN_DISCONNECTEX	DisconnectEx;
 	static LPFN_ACCEPTEX		AcceptEx;
 
