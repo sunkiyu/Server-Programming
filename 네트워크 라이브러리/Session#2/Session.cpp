@@ -19,11 +19,11 @@ Session::~Session()
 
 void Session::Send(BYTE* buffer, int32 len)
 {
-	// »ı°¢ÇÒ ¹®Á¦ Send´Â Áß±¸³­¹æÀ¸·Î ¿©·¯°÷¿¡¼­ »ç¿ëµÈ´Ù´Â Æ¯¼º¿¡ ±âÀÎÇÑ´Ù. =>SendBufferÀ» ÇÏ³ª¸¸ ¾²¸é µ¥ÀÌÅÍ¸¦ µ¤¾î¾µ ¿ì·Á°¡ ÀÖ´Ù.
-	// ¸µ¹öÆÛ´Â º¹»çºñ¿ëÀÌ ÀÖ´Ù.
-	// WSASend°¡ ¿Ï·áµÉ ¶§±îÁö bufferÀÇ µ¥ÀÌÅÍ´Â À¯È¿ÇØ¾ßÇÑ´Ù.
-	// 1) ¹öÆÛ °ü¸®?
-	// 2) sendEvent °ü¸®? ´ÜÀÏ? ¿©·¯°³? WSASend ÁßÃ¸?
+	// ìƒê°í•  ë¬¸ì œ SendëŠ” ì¤‘êµ¬ë‚œë°©ìœ¼ë¡œ ì—¬ëŸ¬ê³³ì—ì„œ ì‚¬ìš©ëœë‹¤ëŠ” íŠ¹ì„±ì— ê¸°ì¸í•œë‹¤. =>SendBufferì„ í•˜ë‚˜ë§Œ ì“°ë©´ ë°ì´í„°ë¥¼ ë®ì–´ì“¸ ìš°ë ¤ê°€ ìˆë‹¤.
+	// ë§ë²„í¼ëŠ” ë³µì‚¬ë¹„ìš©ì´ ìˆë‹¤.
+	// WSASendê°€ ì™„ë£Œë  ë•Œê¹Œì§€ bufferì˜ ë°ì´í„°ëŠ” ìœ íš¨í•´ì•¼í•œë‹¤.
+	// 1) ë²„í¼ ê´€ë¦¬?
+	// 2) sendEvent ê´€ë¦¬? ë‹¨ì¼? ì—¬ëŸ¬ê°œ? WSASend ì¤‘ì²©?
 
 	// TEMP
 	SendEvent* sendEvent = xnew<SendEvent>();
@@ -31,7 +31,7 @@ void Session::Send(BYTE* buffer, int32 len)
 	sendEvent->buffer.resize(len);
 	::memcpy(sendEvent->buffer.data(), buffer, len);
 
-	//¾²·¹µå ¼¼ÀÌÇÁÇÏÁö ¾Ê±â¿¡ ¶ôÀ» °Ç´Ù.
+	//ì“°ë ˆë“œ ì„¸ì´í”„í•˜ì§€ ì•Šê¸°ì— ë½ì„ ê±´ë‹¤.
 	WRITE_LOCK;
 	RegisterSend(sendEvent);
 }
@@ -44,7 +44,7 @@ void Session::Disconnect(const WCHAR* cause)
 	// TEMP
 	wcout << "Disconnect : " << cause << endl;
 
-	OnDisconnected(); // ÄÁÅÙÃ÷ ÄÚµå¿¡¼­ ¿À¹ö·Îµù
+	OnDisconnected(); // ì»¨í…ì¸  ì½”ë“œì—ì„œ ì˜¤ë²„ë¡œë”©
 	SocketUtils::Close(_socket);
 	GetService()->ReleaseSession(GetSessionRef());
 }
@@ -111,12 +111,12 @@ void Session::RegisterSend(SendEvent* sendEvent)
 	wsaBuf.len = (ULONG)sendEvent->buffer.size();
 
 	DWORD numOfBytes = 0;
-	//ThreadSafeÇÏÁö ¾Ê´Ù. MSDN ÂüÁ¶
-	//µ¥ÀÌÅÍ¸¦ ÇÑ¹ø¿¡ º¸³»ÁÖ´Â°Ô ÁÁ´Ù. scatter gether
+	//ThreadSafeí•˜ì§€ ì•Šë‹¤. MSDN ì°¸ì¡°
+	//ë°ì´í„°ë¥¼ í•œë²ˆì— ë³´ë‚´ì£¼ëŠ”ê²Œ ì¢‹ë‹¤. scatter gether
 	if (SOCKET_ERROR == ::WSASend(_socket, &wsaBuf, 1, OUT &numOfBytes, 0, sendEvent, nullptr))
 	{
 		int32 errorCode = ::WSAGetLastError();
-		//ÆæµùÀÌ ¾Æ´Ñ ¿¡·¯´Â ÁøÂ¥ ¿¡·¯ÀÌ´Ù.
+		//íœë”©ì´ ì•„ë‹Œ ì—ëŸ¬ëŠ” ì§„ì§œ ì—ëŸ¬ì´ë‹¤.
 		if (errorCode != WSA_IO_PENDING)
 		{
 			HandleError(errorCode);
@@ -130,13 +130,13 @@ void Session::ProcessConnect()
 {
 	_connected.store(true);
 
-	// ¼¼¼Ç µî·Ï
+	// ì„¸ì…˜ ë“±ë¡
 	GetService()->AddSession(GetSessionRef());
 
-	// ÄÁÅÙÃ÷ ÄÚµå¿¡¼­ ¿À¹ö·Îµù
+	// ì»¨í…ì¸  ì½”ë“œì—ì„œ ì˜¤ë²„ë¡œë”©
 	OnConnected();
 
-	// ¼ö½Å µî·Ï
+	// ìˆ˜ì‹  ë“±ë¡
 	RegisterRecv();
 }
 
@@ -150,10 +150,10 @@ void Session::ProcessRecv(int32 numOfBytes)
 		return;
 	}
 
-	// ÄÁÅÙÃ÷ ÄÚµå¿¡¼­ ¿À¹ö·Îµù
+	// ì»¨í…ì¸  ì½”ë“œì—ì„œ ì˜¤ë²„ë¡œë”©
 	OnRecv(_recvBuffer, numOfBytes);
 
-	// ¼ö½Å µî·Ï
+	// ìˆ˜ì‹  ë“±ë¡
 	RegisterRecv();
 }
 
@@ -168,7 +168,7 @@ void Session::ProcessSend(SendEvent* sendEvent, int32 numOfBytes)
 		return;
 	}
 
-	// ÄÁÅÙÃ÷ ÄÚµå¿¡¼­ ¿À¹ö·Îµù
+	// ì»¨í…ì¸  ì½”ë“œì—ì„œ ì˜¤ë²„ë¡œë”©
 	OnSend(numOfBytes);
 }
 
