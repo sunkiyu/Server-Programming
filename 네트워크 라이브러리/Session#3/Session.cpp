@@ -19,9 +19,9 @@ Session::~Session()
 
 void Session::Send(BYTE* buffer, int32 len)
 {
-	// »ı°¢ÇÒ ¹®Á¦
-	// 1) ¹öÆÛ °ü¸®?
-	// 2) sendEvent °ü¸®? ´ÜÀÏ? ¿©·¯°³? WSASend ÁßÃ¸?
+	// ìƒê°í•  ë¬¸ì œ
+	// 1) ë²„í¼ ê´€ë¦¬?
+	// 2) sendEvent ê´€ë¦¬? ë‹¨ì¼? ì—¬ëŸ¬ê°œ? WSASend ì¤‘ì²©?
 
 	// TEMP
 	SendEvent* sendEvent = xnew<SendEvent>();
@@ -46,7 +46,7 @@ void Session::Disconnect(const WCHAR* cause)
 	// TEMP
 	wcout << "Disconnect : " << cause << endl;
 
-	OnDisconnected(); // ÄÁÅÙÃ÷ ÄÚµå¿¡¼­ ÀçÁ¤ÀÇ
+	OnDisconnected(); // ì»¨í…ì¸  ì½”ë“œì—ì„œ ì¬ì •ì˜
 	GetService()->ReleaseSession(GetSessionRef());
 
 	RegisterDisconnect();
@@ -89,15 +89,15 @@ bool Session::RegisterConnect()
 	if (SocketUtils::SetReuseAddress(_socket, true) == false)
 		return false;
 
-	//ÀÌ ºÎºĞÀ» ÇØÁÖÁö ¾ÊÀ¸¸é ConnectEx°¡ ¿¡·¯³­´Ù.
-	if (SocketUtils::BindAnyAddress(_socket, 0/*³²´Â°Å*/) == false)
+	//ì´ ë¶€ë¶„ì„ í•´ì£¼ì§€ ì•Šìœ¼ë©´ ConnectExê°€ ì—ëŸ¬ë‚œë‹¤.
+	if (SocketUtils::BindAnyAddress(_socket, 0/*ë‚¨ëŠ”ê±°*/) == false)
 		return false;
 
 	_connectEvent.Init();
 	_connectEvent.owner = shared_from_this(); // ADD_REF
 
 	DWORD numOfBytes = 0;
-	//»ó´ë¹æ ÁÖ¼Ò(Å¬¶ó)
+	//ìƒëŒ€ë°© ì£¼ì†Œ(í´ë¼)
 	SOCKADDR_IN sockAddr = GetService()->GetNetAddress().GetSockAddr();
 	if (false == SocketUtils::ConnectEx(_socket, reinterpret_cast<SOCKADDR*>(&sockAddr), sizeof(sockAddr), nullptr, 0, &numOfBytes, &_connectEvent))
 	{
@@ -117,7 +117,7 @@ bool Session::RegisterDisconnect()
 	_disconnectEvent.Init();
 	_disconnectEvent.owner = shared_from_this(); // ADD_REF
 
-	//																	¼ÒÄÏ Àç»ç¿ë °¡´ÉÇÑ´Ù.
+	//																	ì†Œì¼“ ì¬ì‚¬ìš© ê°€ëŠ¥í•œë‹¤.
 	if (false == SocketUtils::DisconnectEx(_socket, &_disconnectEvent, TF_REUSE_SOCKET, 0))
 	{
 		int32 errorCode = ::WSAGetLastError();
@@ -184,13 +184,13 @@ void Session::ProcessConnect()
 
 	_connected.store(true);
 
-	// ¼¼¼Ç µî·Ï
+	// ì„¸ì…˜ ë“±ë¡
 	GetService()->AddSession(GetSessionRef());
 
-	// ÄÁÅÙÃ÷ ÄÚµå¿¡¼­ ÀçÁ¤ÀÇ
+	// ì»¨í…ì¸  ì½”ë“œì—ì„œ ì¬ì •ì˜
 	OnConnected();
 
-	// ¼ö½Å µî·Ï
+	// ìˆ˜ì‹  ë“±ë¡
 	RegisterRecv();
 }
 
@@ -209,10 +209,10 @@ void Session::ProcessRecv(int32 numOfBytes)
 		return;
 	}
 
-	// ÄÁÅÙÃ÷ ÄÚµå¿¡¼­ ÀçÁ¤ÀÇ
+	// ì»¨í…ì¸  ì½”ë“œì—ì„œ ì¬ì •ì˜
 	OnRecv(_recvBuffer, numOfBytes);
 
-	// ¼ö½Å µî·Ï
+	// ìˆ˜ì‹  ë“±ë¡
 	RegisterRecv();
 }
 
@@ -227,7 +227,7 @@ void Session::ProcessSend(SendEvent* sendEvent, int32 numOfBytes)
 		return;
 	}
 
-	// ÄÁÅÙÃ÷ ÄÚµå¿¡¼­ ÀçÁ¤ÀÇ
+	// ì»¨í…ì¸  ì½”ë“œì—ì„œ ì¬ì •ì˜
 	OnSend(numOfBytes);
 }
 
