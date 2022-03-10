@@ -19,7 +19,7 @@
   * [Lock-Based Stack](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/LockBased%20Stack%20Queue)
   * [Lock-Based Queue](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/LockBased%20Stack%20Queue)
   * [Lock-Free-Stack#1](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Lock-Free-Stack%231)
-  * [Lock-Free-Stack#2](https://github.com/sunkiyu/Server-Programming/blob/main/Lock-Free-Stack%232/README.md)
+  * [Lock-Free-Stack#2](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Lock-Free-Stack%232)
   * [ThreadManager](https://github.com/sunkiyu/Server-Programming/blob/main/ThreadManager/README.md)
   * [Reader-Writer-Lock](https://github.com/sunkiyu/Server-Programming/blob/main/Reader-Writer-Lock/README.md)
   * [Dead-Lock 탐지](https://github.com/sunkiyu/Server-Programming/blob/main/DeadLock%20Detection/README.md)
