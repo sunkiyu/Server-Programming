@@ -1,4 +1,4 @@
 #pragma once
 
-//¾²·¹µå °ü¸®
+//Â¾Â²Â·Â¹ÂµÃ¥ Â°Ã¼Â¸Â®
 extern thread_local uint32 LThreadId;
