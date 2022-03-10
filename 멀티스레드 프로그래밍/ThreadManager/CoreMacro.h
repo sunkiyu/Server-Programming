@@ -2,10 +2,10 @@
 /*---------
 :	Crash
 ----------*/
-//#defineÀ» ¿©·¯ÁÙÀ» ÇÏ·Á¸é \À» Àû¾îÁà¾ßÇÑ´Ù.
-//°íÀÇ·Î Crash¸¦ ³»·Á¸é ÄÄÆÄÀÏ·¯°¡ Àâ¾ÆÁÖ±â ¶§¹®¿¡
-//°íÀÇ·Î Crash¸¦ ³»±âÀ§ÇØ
-//crash¸¦ nullptr·Î ¸¸µçÈÄ nullptrÀÌ ¾Æ´Ï¶ó°í °¡Á¤½ÃÅ²´Ù.
+//#defineì„ ì—¬ëŸ¬ì¤„ì„ í•˜ë ¤ë©´ \ì„ ì ì–´ì¤˜ì•¼í•œë‹¤.
+//ê³ ì˜ë¡œ Crashë¥¼ ë‚´ë ¤ë©´ ì»´íŒŒì¼ëŸ¬ê°€ ìž¡ì•„ì£¼ê¸° ë•Œë¬¸ì—
+//ê³ ì˜ë¡œ Crashë¥¼ ë‚´ê¸°ìœ„í•´
+//crashë¥¼ nullptrë¡œ ë§Œë“ í›„ nullptrì´ ì•„ë‹ˆë¼ê³  ê°€ì •ì‹œí‚¨ë‹¤.
 #define CRASH(cause)				\
 {									 \
 	uint32 *crash = nullptr;		 \
