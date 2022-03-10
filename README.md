@@ -28,7 +28,7 @@
 * * *
   * [레퍼런스 카운팅](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%94%EB%AA%A8%EB%A6%AC%20%EA%B4%80%EB%A6%AC/ReferenceCounting)
   * [Allocator](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%94%EB%AA%A8%EB%A6%AC%20%EA%B4%80%EB%A6%AC/Allocator)
-  * [Stomp Allocator](https://github.com/sunkiyu/Server-Programming/blob/main/Stomp-Allocator/README.md)
+  * [Stomp Allocator](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%94%EB%AA%A8%EB%A6%AC%20%EA%B4%80%EB%A6%AC/Stomp-Allocator)
   * [Memory Poo1#1](https://github.com/sunkiyu/Server-Programming/blob/main/Memory%20Pool%231/README.md)
   * [TypeCast](https://github.com/sunkiyu/Server-Programming/blob/main/Memory%20Pool%231/README.md)
    ### 네트워크 라이브러리
