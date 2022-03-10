@@ -26,7 +26,7 @@
   * [멀티스레드 소수구하기 문제](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20%EC%86%8C%EC%88%98%20%EA%B5%AC%ED%95%98%EA%B8%B0)
    ### 메모리 관리
 * * *
-  * [레퍼런스 카운팅](https://github.com/sunkiyu/Server-Programming/blob/main/ReferenceCounting/README.md)
+  * [레퍼런스 카운팅](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%94%EB%AA%A8%EB%A6%AC%20%EA%B4%80%EB%A6%AC/ReferenceCounting)
   * [Allocator](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%A9%94%EB%AA%A8%EB%A6%AC%20%EA%B4%80%EB%A6%AC/Allocator)
   * [Stomp Allocator](https://github.com/sunkiyu/Server-Programming/blob/main/Stomp-Allocator/README.md)
   * [Memory Poo1#1](https://github.com/sunkiyu/Server-Programming/blob/main/Memory%20Pool%231/README.md)
