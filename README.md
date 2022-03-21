@@ -47,6 +47,7 @@
   * [Buffer Helpers](https://github.com/sunkiyu/Server-Programming/tree/main/%ED%8C%A8%ED%82%B7%20%EC%A7%81%EB%A0%AC%ED%99%94/Buffer%20Helpers)
   * [Packet Handler](https://github.com/sunkiyu/Server-Programming/tree/main/%ED%8C%A8%ED%82%B7%20%EC%A7%81%EB%A0%AC%ED%99%94/PacketHandler)
   * [Unicode](https://github.com/sunkiyu/Server-Programming/tree/main/%ED%8C%A8%ED%82%B7%20%EC%A7%81%EB%A0%AC%ED%99%94/Unicode)
+  * [Packet Serializaton]()
 * * *
 ## 참조 강의   
 [[C++과 언리얼로 만드는 MMORPG 게임 개발 시리즈] Part4: 게임 서버](https://www.inflearn.com/course/%EC%96%B8%EB%A6%AC%EC%96%BC-3d-mmorpg-4/)
