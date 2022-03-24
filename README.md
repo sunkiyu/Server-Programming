@@ -47,7 +47,7 @@
   * [Buffer Helpers](https://github.com/sunkiyu/Server-Programming/tree/main/%ED%8C%A8%ED%82%B7%20%EC%A7%81%EB%A0%AC%ED%99%94/Buffer%20Helpers)
   * [Packet Handler](https://github.com/sunkiyu/Server-Programming/tree/main/%ED%8C%A8%ED%82%B7%20%EC%A7%81%EB%A0%AC%ED%99%94/PacketHandler)
   * [Unicode](https://github.com/sunkiyu/Server-Programming/tree/main/%ED%8C%A8%ED%82%B7%20%EC%A7%81%EB%A0%AC%ED%99%94/Unicode)
-  * [패킷 직렬화#1]()
+  * [패킷 직렬화#1](https://github.com/sunkiyu/Server-Programming/tree/main/%ED%8C%A8%ED%82%B7%20%EC%A7%81%EB%A0%AC%ED%99%94/%ED%8C%A8%ED%82%B7%20%EC%A7%81%EB%A0%AC%ED%99%94%231)
   * [패킷 직렬화#2]()
 * * *
 ## 참조 강의   
