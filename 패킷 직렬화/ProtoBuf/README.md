@@ -1,6 +1,6 @@
 # ProtoBuf(Protocol Buffer)
 
-> 사용법
+## 사용법
 
 ### Step1
 https://github.com/protocolbuffers/protobuf/releases 에서 Google Protobuf 컴파일러를 다운받는다.
