@@ -1,5 +1,5 @@
 # 패킷 자동화\#1
-![image](https://user-images.githubusercontent.com/68372094/160544135-31a6b63b-99d8-48cd-8250-c0319e63bab8.png)
+![image](https://user-images.githubusercontent.com/68372094/160544308-7c5143ab-d556-4207-a6c2-e16abc9175f2.png)
 ***
-![image](https://user-images.githubusercontent.com/68372094/160544046-0a7790cb-cc05-44bb-b99f-7ae9cba874ce.png)
+![image](https://user-images.githubusercontent.com/68372094/160544370-c8ccdb59-275e-4e52-b24a-6cabceea6cf5.png)
 
