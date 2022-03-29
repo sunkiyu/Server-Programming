@@ -30,3 +30,5 @@ https://github.com/protocolbuffers/protobuf/releases 에서 Google Protobuf 컴�
 * 프로젝트에 라이브러리를 링크시켜 사용한다.
 
 ![image](https://user-images.githubusercontent.com/68372094/160517589-ac891234-f96a-438b-be93-4efa3810d528.png)
+![image](https://user-images.githubusercontent.com/68372094/160519706-4aafcd8c-b736-4568-ad14-311e34713c56.png)
+
