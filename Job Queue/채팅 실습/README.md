@@ -1,4 +1,4 @@
 # 채팅 실습
 
-![image](https://user-images.githubusercontent.com/68372094/160975308-718fd500-2281-4ed1-9d08-885e5f32bd9f.png)
+![image](https://user-images.githubusercontent.com/68372094/160976826-2b19bc39-9db3-4baa-ad9b-efb4ea3d2a9c.png)
 * * *
