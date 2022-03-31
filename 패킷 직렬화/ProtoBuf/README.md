@@ -12,7 +12,7 @@ https://github.com/protocolbuffers/protobuf/releases 에서 Google Protobuf 컴�
 
 ### Step3
 ![image](https://user-images.githubusercontent.com/68372094/160231844-8802f4a5-dec8-466b-8439-edd030b177b5.png)
-* 컴파일 환경을 설정해준다.
+* 컴파일 환경을 설정 및 컴파일
 
 ### Step4
 * 생성된 .cc 파일과 .h 파일을 프로젝트 폴더로 가져온다.
