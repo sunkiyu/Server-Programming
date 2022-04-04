@@ -57,7 +57,7 @@
 * * *
  ### Job Queue
 * [채팅 실습](https://github.com/sunkiyu/Server-Programming/tree/main/Job%20Queue/%EC%B1%84%ED%8C%85%20%EC%8B%A4%EC%8A%B5)
-* [Job Queue#1]()
+* [Job Queue#1](https://github.com/sunkiyu/Server-Programming/tree/main/Job%20Queue/Job%20Queue%231)
 * [Job Queue#2]()
 * * *
 ## 참조 강의   
