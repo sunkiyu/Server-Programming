@@ -4,3 +4,4 @@
 * 플레이어 정보를 Room Class 에서 관리한다.
 * * *
 ![image](https://user-images.githubusercontent.com/68372094/160980555-c09f680c-861e-452f-95de-54cbb7b4f33d.png)
+* Room에 있는 모든 플레이어에게 BroadCast로 메세지를 전송한다.
