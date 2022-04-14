@@ -1,6 +1,17 @@
 # TypeCast
 
 ```cpp
+
+class Parent
+{
+
+};
+
+class Child:public Parent
+{
+
+};
+
 template<typename From, typename To>
 class From2To
 {
