@@ -1,6 +1,6 @@
 # Buffer Helpers
 
-![image](https://user-images.githubusercontent.com/68372094/163781509-ef0bc61d-8f86-4443-bc86-b7258b4cb9a3.png)
+![image](https://user-images.githubusercontent.com/68372094/163809512-95c01c8a-6137-48fc-ac0a-31fb4f442232.png)
 ***
-![image](https://user-images.githubusercontent.com/68372094/163781601-d1a46152-9bcb-4781-8e88-e513171b27d8.png)
+![image](https://user-images.githubusercontent.com/68372094/163809549-ec3d6d94-5963-43e6-83bd-4a06420055f5.png)
 
