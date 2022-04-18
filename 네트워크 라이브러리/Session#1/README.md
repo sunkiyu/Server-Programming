@@ -1,5 +1,5 @@
 ## Session#1 개요
-![image](https://user-images.githubusercontent.com/68372094/163756375-c65efe66-1197-4662-a53e-9498a26e64e7.png)
+![image](https://user-images.githubusercontent.com/68372094/163758902-a4e0def0-a823-4490-811c-6429a7736459.png)
 
 * 서버가 처리할 최대 세션 수 만큼 AcceptEvent와 Session을 생성하고 AcceptEvent가 Session에 대한 정보를 갖고 있게한다.
 * 각각의 생성된 세션 수 만큼 AcceptEx를 호출하여 클라이언트의 접속이 왔을 때 완료 통지가 되도록 하고 있다.
