@@ -3,4 +3,7 @@
 ![image](https://user-images.githubusercontent.com/68372094/156991917-98e7ea65-e5f1-41c4-a141-8fc46126b02d.png)
 ![image](https://user-images.githubusercontent.com/68372094/162748012-00bda5b3-e381-4392-86dd-868d6428b525.png)
 
-* AcceptEx 작업으로 생성된 세션의 소켓으로 WSARecv 함수를 호출하여 비동기로 데이터 수신 작업을 등록한다.
+* Worker Thread 들이 GetQueuedCompletionStatus(GQCS)를 호출하며 I/O 완료 작업이 발생하기를 기다리고 있다.
+* AcceptEx에 대한 비동기 작업이 완료되면 GQCS에서 잠자던 WorkerThread가 깨어나 완료 작업을 수행한다.
+* GQCS에서는 OVERLAPPED 구조체를 상속받아 AcceptEx 작업 시 인자로 넘겨준 AcceptEvent 를 복원할 수 있다.
+* AcceptEvent 인자에는 Listener에 대한 정보와 Session에 대한 정보가 들어있으며 GQCS에서 복원하여 사용할 수 있다.
