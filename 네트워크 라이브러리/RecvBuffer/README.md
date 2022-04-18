@@ -1,6 +1,6 @@
 # RecvBuffer
 
-![image](https://user-images.githubusercontent.com/68372094/162964423-1d6e3106-d571-4ff2-9c14-878e79f58a65.png)
+![image](https://user-images.githubusercontent.com/68372094/163809372-4f196a94-7c9d-4ac8-b967-11a8b311f634.png)
 
 * 서버에서 AcceptEx 작업 완료 후 클라이언트 정보를 받기 위해 WSARecv 작업을 하는데 이 때 클라이언트와 Accept한 세션의 RecvBuffer의 WritePos 위치를 인자로 넘긴다.
 * 클라이언트의 정보를 수신하여 WSARecv에 대한 완료 통지가 GQCS에 오면 ProcessRecv 작업을 수행한다.
