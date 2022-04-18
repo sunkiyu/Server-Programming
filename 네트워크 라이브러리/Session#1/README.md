@@ -1,4 +1,4 @@
 ## Session#1 개요
 ![image](https://user-images.githubusercontent.com/68372094/163756375-c65efe66-1197-4662-a53e-9498a26e64e7.png)
 
-* AcceptEx -> WSARecv 작업이 완료되면 Overlapped 인자로 해당 session에 관한 정보를 얻은 후 데이터를 출력한 뒤 다시 WSARecv하여 수신 등록한다.
+* AcceptEvent와 Session을 서버가 처리할 최대 세션 개수 만큼 생성하고 AcceptEvent가 각각의 Session에 대한 정보를 가지고 있다.
