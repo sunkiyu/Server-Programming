@@ -12,3 +12,4 @@
 * GQCS가 깨어나면 AcceptEx 처리과정과 마찬가지로 OVERLAPPED 인자의 owner을 검사하게 되며 WSARecv의 경우 owner은 WSARecv를 호출한 Session이 된다.
 * 따라서 Session의 Dispatch를 수행한다.
 * WSARecv 호출시 인자로 넘겨주었던 recvBuffer을 통해 수신된 데이터를 읽을 수 있으며 echo 서버 작성시 받은 데이터를 그대로 Send 한다.
+* 서버가 클라이언트로 Send 시 OVERLAPPED 구조체를 상속받은 SendEvent를 해당 Session 포인터를 담은 후 WSASend 비동기 호출하며 인자로 넘겨준다.
