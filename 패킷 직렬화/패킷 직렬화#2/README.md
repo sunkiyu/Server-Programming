@@ -1,6 +1,6 @@
 # 패킷 직렬화 \#2
 
-![image](https://user-images.githubusercontent.com/68372094/163938655-1765c988-4b18-4cc6-97e2-ee62a280dfc0.png)
+![image](https://user-images.githubusercontent.com/68372094/163939081-33e81e22-928f-437b-9d79-d5474444074a.png)
 
 * 데이터를 꺼내 쓸 때 복사하지 않고 포인터로 접근하여 데이터를 얻어 복사 비용이 들지 않는 것이 포인트이다.
 * A라는 구조체 포인터로 바이트 스트림 배열을 가르키면 A 구조체 관점으로 매핑되어 바이트 스트림을 바라볼 수 있다.
