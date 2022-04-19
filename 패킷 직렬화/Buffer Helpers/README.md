@@ -6,3 +6,4 @@
 
 * BufferWriter은 << Operator을 오버로딩하여 SendBufferChunk에 << 피연산자 형식에 맞게 데이터를 쓸 수 있다.
 * BufferReader은 >> Operator을 오버로딩하여 recvBuffer로 부터 >> 피연산자 형시겡 맞게 데이터를 읽어 올 수 있다.
+* BufferWriter과 BufferReader은 데이터를 버퍼에 읽고 쓰는데 도움을 준다.
