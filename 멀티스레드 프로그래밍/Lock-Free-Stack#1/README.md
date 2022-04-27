@@ -23,7 +23,7 @@ public:
 		
 		//만약 _head와 node->next가 같다면 _head = node 시켜주고 true리턴
 		//같지 않다면 즉, 경합이 발생하였다면, node->next = _head 시켜주고 false 리턴
-		/_head가 전역 속성이므로 이 사이에 경합이 발생할 수 있다!
+		//_head가 전역 속성이므로 이 사이에 경합이 발생할 수 있다!
 		while (_head.compare_exchange_weak(node->next, node) == false)
 		{
 		}
