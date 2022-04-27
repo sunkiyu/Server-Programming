@@ -110,7 +110,8 @@ public:
 		Node* last = node;
 		while (last->next)
 			last = last->next;
-
+			
+	        //기존 PendingList를 뒤에 붙인다.
 		ChainPendingNodeList(node, last);
 	}
 
@@ -118,7 +119,8 @@ public:
 	{
 		ChainPendingNodeList(node, node);
 	}
-
+	
+	//PendingList에 포함된 모든 노드를 삭제한다.
 	static void DeleteNodes(Node* node)
 	{
 		while (node)
