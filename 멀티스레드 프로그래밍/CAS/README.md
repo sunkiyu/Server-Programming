@@ -1,5 +1,5 @@
 ## CAS  
--compare_exchange_strong
+-compare_exchange_strong   
 -compare_exchange_weak   
 =>두 함수가 모두 atomic 한 CAS 작업을 제공한다.   
 * weak과 strong의 가장 큰 차이점은 weak 같은 경우 교환 가능하더라도 CAS 작업이 실패 할 수 있고, strong의 경우 교환 가능하면 항상 성공한다.   
