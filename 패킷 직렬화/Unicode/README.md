@@ -8,8 +8,8 @@ char str[100] = "가"; //CP949 한글 2바이트, 로마 1바이트
 char str2[100] = u8"가";//UTF8, 유니코드 문자열,한글 3바이트, 로마 1바이트
 WCHAR str3[100] = L"가"; //UTF16 한글, 유니코드 문자열, 로마 모두 2바이트
 ```
+![image](https://user-images.githubusercontent.com/68372094/165757259-8c4bfb1a-9e1e-4691-823a-45b57a394f7d.png)
 
-![image](https://user-images.githubusercontent.com/68372094/163394210-208925f9-8c78-4ee2-9a91-add7e39ea1f7.png)
 ![image](https://user-images.githubusercontent.com/68372094/163394256-cdf63037-bfda-493c-aa50-631eae6a9fab.png)
 
 
