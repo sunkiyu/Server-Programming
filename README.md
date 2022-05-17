@@ -61,5 +61,8 @@
 * [Job Queue#1](https://github.com/sunkiyu/Server-Programming/tree/main/Job%20Queue/Job%20Queue%231)
 * [Job Queue#2](https://github.com/sunkiyu/Server-Programming/tree/main/Job%20Queue/Job%20Queue%232)
 * * *
+ ### 데이터베이스 연동
+ * [DB Connection](https://github.com/sunkiyu/Server-Programming/tree/main/Job%20Queue/Job%20Queue%231)   
+ * * *
 
 
