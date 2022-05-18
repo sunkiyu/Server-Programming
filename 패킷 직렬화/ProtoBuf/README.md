@@ -29,7 +29,8 @@ https://github.com/protocolbuffers/protobuf/releases 에서 Google Protobuf 컴�
 ### Step6
 * 프로젝트에 라이브러리를 링크시켜 사용한다.
 
-![image](https://user-images.githubusercontent.com/68372094/160517589-ac891234-f96a-438b-be93-4efa3810d528.png)
+![image](https://user-images.githubusercontent.com/68372094/160517589-ac891234-f96a-438b-be93-4efa3810d528.png)  
+* 서버 측에서 ProtoBuf의 SerializeToArray 함수로 패킷을 직렬화하여 클라이언트에게 전송한다.
 ***
 ![image](https://user-images.githubusercontent.com/68372094/160519706-4aafcd8c-b736-4568-ad14-311e34713c56.png)
 * 클라이언트가 데이터를 받게되면 OnRecvPacket에서 패킷 헤더의 ID를 검사한 뒤 해당 헤더의 패킷을 처리할 Handler 함수를 호출한다.    
