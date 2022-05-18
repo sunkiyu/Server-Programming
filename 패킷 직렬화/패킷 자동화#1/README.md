@@ -14,14 +14,13 @@ SKPacketHandler[PKT_S_TEST] = [](PacketSessionRef& session, BYTE* buffer, int32 
 
 //패킷 핸들러 함수는 템플릿으로 선언하여 여러가지 패킷 ID를 처리할 수 있도록 한다.
 template<typename PacketType, typename ProcessFunc>
-	static bool HandlePacket(ProcessFunc func, PacketSessionRef& session, BYTE* buffer, int32 len)
-	{
-		PacketType pkt;
-		if (pkt.ParseFromArray(buffer + sizeof(PacketHeader), len - sizeof(PacketHeader)) == false)
-			return false;
-
-		return func(session, pkt);
-	}
+static bool HandlePacket(ProcessFunc func, PacketSessionRef& session, BYTE* buffer, int32 len)
+{
+     //func : 핸들러 함수 포인터
+     //PacketType : S_TEST
+     //session, buffer, len 차례로 넣는다.
+     ...
+}
 ```
 * 패킷 핸들러 함수를 일일이 만들어주는 것은 비효율적이다. 따라서 자동화가 필요하다.     
 ![image](https://user-images.githubusercontent.com/68372094/160997708-ab8e0ec5-1453-47f5-9b39-01c18f1dc623.png)
