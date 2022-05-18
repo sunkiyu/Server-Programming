@@ -22,7 +22,9 @@ static bool HandlePacket(ProcessFunc func, PacketSessionRef& session, BYTE* buff
      ...
 }
 ```
+## 수 백개 이상의 패킷 ID 가 생성될 수 있는데 ID 별로 핸들러 함수를 일일이 만들어 주는 것은 비효율 적임 
 * 패킷 핸들러 함수를 일일이 만들어주는 것은 비효율적이다. 따라서 자동화가 필요하다.     
+* Python 자동화 툴을 사용, Python의 Jinja2 템플릿 엔진을 사용하면 헤더 파일을 자동으로 생성해준다.   
 ![image](https://user-images.githubusercontent.com/68372094/160997708-ab8e0ec5-1453-47f5-9b39-01c18f1dc623.png)
 ***
 ![image](https://user-images.githubusercontent.com/68372094/160998639-10cdbefd-fb39-4914-8f8b-11911718b45d.png)
