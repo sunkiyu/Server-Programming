@@ -64,7 +64,8 @@
 * [Job Queue#4](https://github.com/sunkiyu/Server-Programming/tree/main/Job%20Queue/Job%20Queue%234)
 * * *
  ### 데이터베이스 연동
- * [DB Connection](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%EC%97%B0%EB%8F%99/DB%20Connection)   
+ * [DB Connection](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%EC%97%B0%EB%8F%99/DB%20Connection)
+ * [Password Encryption](https://github.com/sunkiyu/Server-Programming/tree/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%EC%97%B0%EB%8F%99/Password%20Encryption)   
  * * *
 
 
